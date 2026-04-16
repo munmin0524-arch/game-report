@@ -874,6 +874,105 @@ table tr:hover td { background: #f9fafb; }
 .set-c-purple { border-color: #6b4a8a; background: #f6f3fa; }
 .set-c-purple .set-card-num { color: #6b4a8a; }
 
+/* 3-2 우측: 미니 카드 + depth 표 */
+.set-desc-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+.set-mini-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.set-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid;
+}
+.set-mini-num {
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.set-mini h5 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.3;
+}
+.set-mini p {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+.set-mini.set-c-blue   .set-mini-num { color: #4a78a6; }
+.set-mini.set-c-green  .set-mini-num { color: #4a7862; }
+.set-mini.set-c-orange .set-mini-num { color: #a05a3d; }
+
+/* depth 구조 표 */
+.depth-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fafafb;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 14px 16px;
+  gap: 8px;
+  overflow: hidden;
+}
+.depth-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.depth-title strong { color: #a05a3d; }
+.depth-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.depth-table th {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+}
+.depth-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+.depth-table tr:last-child td { border-bottom: none; }
+.depth-table tr.depth-highlight td {
+  background: #fef9e0;
+}
+.depth-icon {
+  display: inline-block;
+  margin-right: 4px;
+}
+.depth-badge {
+  display: inline-block;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.depth-badge.d-none { background: #e5e7eb; color: #6b7280; }
+.depth-badge.d-2    { background: #d1fae5; color: #065f46; }
+.depth-badge.d-3    { background: #dbeafe; color: #1e40af; }
+.depth-badge.d-4    { background: #fed7aa; color: #9a3412; }
+.depth-badge.d-5    { background: #f3e8ff; color: #6b21a8; }
+
 /* ═══════════════════ */
 /*  2-7 호출 플로우    */
 /* ═══════════════════ */
@@ -2420,57 +2519,82 @@ table tr:hover td { background: #f9fafb; }
   </div>
 </div>
 
-<!-- ────── Slide 13: 3-2 세트지 선택 ② 선택/필터 ────── -->
+<!-- ────── Slide 13: 3-2 세트지 선택 ② 필터 / depth ────── -->
 <div class="slide" data-slide="13">
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t3">3-2</div>
-      <div class="s-title">세트지 선택 화면안 ② <span style="font-size:18px; color:#6b7280; font-weight:600;">— 세트지 선택 / 필터</span></div>
+      <div class="s-title">세트지 선택 화면안 ② <span style="font-size:18px; color:#6b7280; font-weight:600;">— 필터 / 모드별 depth 구조</span></div>
     </div>
-    <div class="s-sub">교사가 원하는 세트지를 골라서 진입하는 흐름 — 탭 / 필터 / 검색 / 새 퀴즈 만들기</div>
+    <div class="s-sub">특정 교과/과목 필터로 검색 및 브라우징 — 필터 모드에 따라 depth 구조가 다름 (윤CP 협의 중)</div>
   </div>
   <div class="s-body" style="display:flex; flex-direction:column; gap:12px;">
     <div class="set-row">
       <!-- 좌: 화면 캡처 -->
       <div class="set-mockup">
-        <img src="slides_png/slide_29.png" alt="세트지 선택 화면">
+        <img src="slides_png/slide_29.png" alt="세트지 선택 화면 - 필터">
         <a class="set-url" href="https://game-omega-hazel.vercel.app/sets" target="_blank" rel="noopener">
           🔗 https://game-omega-hazel.vercel.app/sets
         </a>
       </div>
-      <!-- 우: 영역별 설명 -->
-      <div class="set-desc">
-        <div class="set-card set-c-blue">
-          <div class="set-card-num">①</div>
-          <div class="set-card-body">
-            <h5>페이지 헤더 + 새 퀴즈 만들기</h5>
-            <p>"어떤 퀴즈로 수업하시겠어요?"<br>
-            우측 상단 <strong>[+ 새 퀴즈 만들기]</strong> CTA 버튼</p>
+      <!-- 우: 영역별 설명 + depth 구조 표 -->
+      <div class="set-desc-2">
+        <!-- 상단: 화면 영역 (3개) -->
+        <div class="set-mini-row">
+          <div class="set-mini set-c-blue">
+            <div class="set-mini-num">①</div>
+            <div>
+              <h5>새 퀴즈 만들기</h5>
+              <p>우측 상단 CTA 버튼</p>
+            </div>
+          </div>
+          <div class="set-mini set-c-green">
+            <div class="set-mini-num">②</div>
+            <div>
+              <h5>출처 탭</h5>
+              <p>전체 99 · 공식 18 · 내가 16 · 다른 선생님 56</p>
+            </div>
+          </div>
+          <div class="set-mini set-c-orange">
+            <div class="set-mini-num">③</div>
+            <div>
+              <h5>검색창</h5>
+              <p>단원/지식요인 키워드 직접 입력</p>
+            </div>
           </div>
         </div>
-        <div class="set-card set-c-green">
-          <div class="set-card-num">②</div>
-          <div class="set-card-body">
-            <h5>출처 탭 (필터)</h5>
-            <p>전체 · 퀴즈파티 공식 (18) · 내가 만든 (16)<br>
-            다른 선생님 (56) — 출처 기반 빠른 분류</p>
-          </div>
-        </div>
-        <div class="set-card set-c-orange">
-          <div class="set-card-num">③</div>
-          <div class="set-card-body">
-            <h5>분류 필터</h5>
-            <p>둘러보기 · <strong>교과서별 · 교재별 · 과목별 · 테마별</strong><br>
-            여러 기준으로 세트지 탐색 가능</p>
-          </div>
-        </div>
-        <div class="set-card set-c-purple">
-          <div class="set-card-num">④</div>
-          <div class="set-card-body">
-            <h5>검색</h5>
-            <p>"원하는 단원/지식요인을 입력하세요"<br>
-            키워드 기반 직접 검색 — 빠른 진입</p>
-          </div>
+
+        <!-- 메인: 모드별 depth 구조 표 (핵심!) -->
+        <div class="depth-section">
+          <div class="depth-title">🎯 분류 필터 모드별 <strong>depth 구조</strong></div>
+          <table class="depth-table">
+            <tr><th>모드</th><th>depth</th><th>구조</th></tr>
+            <tr>
+              <td><span class="depth-icon">🔍</span> <strong>둘러보기</strong></td>
+              <td><span class="depth-badge d-none">없음</span></td>
+              <td>검색만 (depth 없이 자유 탐색)</td>
+            </tr>
+            <tr class="depth-highlight">
+              <td><span class="depth-icon">📚</span> <strong>교과서별</strong></td>
+              <td><span class="depth-badge d-5">5-depth</span></td>
+              <td>교과서 → 과목 → 학년 → 학기 → 단원</td>
+            </tr>
+            <tr>
+              <td><span class="depth-icon">📖</span> <strong>교재별</strong> (문제집)</td>
+              <td><span class="depth-badge d-3">3-depth</span></td>
+              <td>문제집 → 학년 → 학기</td>
+            </tr>
+            <tr>
+              <td><span class="depth-icon">📐</span> <strong>과목별</strong></td>
+              <td><span class="depth-badge d-4">4-depth</span></td>
+              <td>과목 → 학년/학기 → 단원 → 지식요인</td>
+            </tr>
+            <tr>
+              <td><span class="depth-icon">🎨</span> <strong>테마별</strong></td>
+              <td><span class="depth-badge d-2">2-depth</span></td>
+              <td>테마 (간단 분류)</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
