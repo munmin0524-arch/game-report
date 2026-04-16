@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D 퀴즈 게임 보고</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #3a4f6b;
+  --primary-light: #5a6f8b;
+  --c-blue: #4a78a6;
+  --c-green: #4a7862;
+  --c-orange: #a05a3d;
+  --c-red: #a85454;
+  --c-purple: #6b4a8a;
+  --c-cyan: #4a7887;
+  --bg: #fff;
+  --text: #1a1a2e;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f3f4f6;
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 19px;
+  overflow: hidden;
+}
+
+/* ═══ HEADER ═══ */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.h-logo {
+  font-size: 18px;
+  font-weight: 800;
+  margin-right: 24px;
+  white-space: nowrap;
+}
+.h-logo span { color: #6ee7b7; }
+.h-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.h-nav::-webkit-scrollbar { display: none; }
+.h-chip {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.h-chip:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.h-chip.active { background: #6ee7b7; color: var(--primary); }
+.h-date {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-left: 16px;
+  white-space: nowrap;
+}
+
+/* ═══ SLIDE CONTAINER ═══ */
+.viewport {
+  margin-top: 56px;
+  height: calc(100vh - 56px);
+  position: relative;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 44px 80px 90px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideIn 0.35s ease;
+}
+.slide.active { display: flex; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ SLIDE HEADER ═══ */
+.s-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid var(--primary);
+}
+.s-head-l { display: flex; align-items: baseline; gap: 16px; }
+.s-tag {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 4px;
+}
+.s-tag.t1 { background: var(--c-blue); }
+.s-tag.t2 { background: var(--c-orange); }
+.s-tag.t3 { background: var(--c-purple); }
+.s-title {
+  font-size: 33px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.2;
+}
+.s-sub {
+  font-size: 17px;
+  color: var(--text-light);
+}
+
+/* ═══ SLIDE BODY ═══ */
+.s-body { flex: 1; overflow: hidden; }
+
+/* ═══ FOOTER NAV ═══ */
+.foot {
+  position: fixed;
+  bottom: 16px; right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 6px 8px 6px 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 90;
+}
+.f-count { font-size: 17px; font-weight: 700; color: var(--primary); }
+.f-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 21px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.f-btn:hover { opacity: 0.85; }
+.f-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ═══════════════════ */
+/*  COVER SLIDE        */
+/* ═══════════════════ */
+.cover {
+  background: linear-gradient(135deg, #1a1e2e 0%, #3a4f6b 50%, #5a6f8b 100%);
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  inset: 0;
+  padding: 60px;
+  overflow: hidden;
+}
+.cover.active { display: flex; }
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(110,231,183,0.15), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255,107,53,0.12), transparent 50%);
+}
+.cover > * { position: relative; }
+.cover-tag {
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 6px 24px;
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 36px;
+}
+.cover h1 {
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.cover h1 em { font-style: normal; color: #6ee7b7; }
+.cover-sub {
+  font-size: 21px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 48px;
+}
+.cover-stats {
+  display: flex;
+  gap: 24px;
+}
+.cover-stat {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 16px 28px;
+  text-align: center;
+}
+.cover-stat .v { font-size: 31px; font-weight: 900; }
+.cover-stat .l { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 1px; }
+.cover-date { margin-top: 56px; font-size: 16px; color: rgba(255,255,255,0.4); }
+
+/* ═══════════════════ */
+/*  TOC SLIDE          */
+/* ═══════════════════ */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 100%;
+}
+.toc-col {
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+}
+.toc-col.c1 { background: #f3f6fa; border-color: var(--c-blue); }
+.toc-col.c2 { background: #faf5f0; border-color: var(--c-orange); }
+.toc-col.c3 { background: #f6f3fa; border-color: var(--c-purple); }
+.toc-num {
+  font-size: 75px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.toc-col.c1 .toc-num { color: var(--c-blue); }
+.toc-col.c2 .toc-num { color: var(--c-orange); }
+.toc-col.c3 .toc-num { color: var(--c-purple); }
+.toc-main {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+}
+.toc-list { flex: 1; }
+.toc-item {
+  display: block;
+  padding: 11px 14px;
+  font-size: 19px;
+  color: #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.toc-item:hover { background: rgba(255,255,255,0.85); color: #000; transform: translateX(4px); }
+.toc-item .ti-n { font-weight: 800; margin-right: 10px; }
+
+/* ═══════════════════ */
+/*  COMMON UI          */
+/* ═══════════════════ */
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; height: 100%; }
+.row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+.box {
+  border-radius: 14px;
+  padding: 20px 22px;
+  border: 1.5px solid;
+  display: flex;
+  flex-direction: column;
+}
+.box-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.box-title .bt-tag {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.06);
+}
+
+.lst { list-style: none; padding: 0; flex: 1; }
+.lst li {
+  font-size: 18px;
+  padding: 7px 0;
+  display: flex;
+  gap: 8px;
+  line-height: 1.55;
+}
+.lst li::before {
+  content: '•';
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.lst li .lbl {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.08);
+  margin-right: 6px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.b-mvp { background: #d1fae5; color: #065f46; }
+.b-after { background: #fed7aa; color: #9a3412; }
+.b-future { background: #e9d5ff; color: #6b21a8; }
+.b-done { background: #bbf7d0; color: #14532d; }
+.b-ing { background: #fef08a; color: #713f12; }
+.b-wait { background: #fecaca; color: #7f1d1d; }
+.b-a { background: #dbeafe; color: #1e3a8a; }
+.b-b { background: #d1fae5; color: #065f46; }
+.b-c { background: #ffedd5; color: #7c2d12; }
+.b-d { background: #f3e8ff; color: #581c87; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 17px;
+}
+table th {
+  background: var(--primary);
+  color: #fff;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 16px;
+}
+table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+table tr:hover td { background: #f9fafb; }
+
+/* ═══════════════════ */
+/*  SCHEDULE GANTT     */
+/* ═══════════════════ */
+.gantt-new {
+  display: grid;
+  grid-template-columns: 90px repeat(5, 1fr);
+  grid-template-rows: auto 1fr 1fr;
+  gap: 8px;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 100%;
+}
+.gantt-corner { background: transparent; }
+.gm {
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gm.g4  { background: #3a4f6b; }
+.gm.g5  { background: #4a78a6; }
+.gm.g6  { background: #a05a3d; }
+.gm.g78 { background: #4a7862; }
+.gm.g9  { background: #6b4a8a; }
+
+.gtrack {
+  border-radius: 8px;
+  padding: 10px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.3;
+}
+.tcbs  { background: #e1ebf3; color: #3a4f6b; }
+.tgame { background: #f2e6d6; color: #8a5a3a; }
+
+.gcell {
+  background: #fff;
+  border: 1px solid #d4d4d8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gcell-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+.gcell-list {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #52525b;
+}
+.gcell-list li { margin-bottom: 1px; }
+
+.gcell.accent-launch {
+  border: 2px solid #a05a3d;
+  background: #fff;
+}
+.gcell.accent-launch .gcell-title { color: #a05a3d; }
+
+.gcell.accent-final {
+  border: 2px solid #6b4a8a;
+  background: #faf7ff;
+}
+.gcell.accent-final .gcell-title { color: #6b4a8a; }
+
+/* ═══════════════════ */
+/*  4 NEEDS BOXES      */
+/* ═══════════════════ */
+.needs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.need-box {
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  border: 2px solid;
+}
+.need-box .nb-rank { font-size: 31px; font-weight: 900; line-height: 1; }
+.need-box .nb-name { font-size: 19px; font-weight: 800; margin-top: 6px; }
+.need-box .nb-desc { font-size: 15px; color: #666; margin-top: 4px; }
+
+/* ═══════════════════ */
+/*  PACKAGE TABLE      */
+/* ═══════════════════ */
+.pkg-table { font-size: 11px; }
+.pkg-table th, .pkg-table td { padding: 6px 8px; }
+
+/* ═══════════════════ */
+/*  METHOD CARDS       */
+/* ═══════════════════ */
+.method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.method-card {
+  border-radius: 14px;
+  padding: 18px;
+  border: 2px solid;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.method-card .ml { font-size: 16px; font-weight: 800; letter-spacing: 1px; }
+.method-card .mn { font-size: 21px; font-weight: 900; color: #111; margin: 6px 0; }
+.method-card .md { font-size: 16px; color: #555; line-height: 1.6; flex:1; }
+.mc-a { background: #eff6ff; border-color: var(--c-blue); }
+.mc-a .ml { color: var(--c-blue); }
+.mc-b { background: #ecfdf5; border-color: var(--c-green); }
+.mc-b .ml { color: var(--c-green); }
+.mc-c { background: #fff7ed; border-color: var(--c-orange); }
+.mc-c .ml { color: var(--c-orange); }
+.mc-d { background: #faf5ff; border-color: var(--c-purple); }
+.mc-d .ml { color: var(--c-purple); }
+
+/* ═══════════════════ */
+/*  PACKAGE CARDS      */
+/* ═══════════════════ */
+.pkg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.pkg-card {
+  border-radius: 14px;
+  padding: 16px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.pkg-card .pn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  font-size: 19px;
+  margin-bottom: 6px;
+}
+.pkg-card .pic {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.pkg-card .pcc { font-size: 16px; color: #666; margin-bottom: 6px; line-height: 1.5; }
+.pkg-card .pt { font-size: 15px; color: #999; margin-bottom: 8px; }
+.pkg-card .pe { font-size: 15px; color: var(--c-purple); padding-top: 8px; border-top: 1px dashed #e5e7eb; line-height: 1.6; margin-top: auto; }
+
+/* ═══════════════════ */
+/*  STEPS              */
+/* ═══════════════════ */
+.steps { display: flex; flex-direction: column; gap: 10px; }
+.step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border-left: 4px solid;
+}
+.step .sn {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.step .sb { flex: 1; }
+.step .sb h5 { font-size: 18px; font-weight: 700; }
+.step .sb .sm { font-size: 16px; color: #888; margin-top: 3px; }
+
+/* ═══════════════════ */
+/*  FLOW               */
+/* ═══════════════════ */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+.flow-box {
+  flex: 1;
+  border-radius: 12px;
+  padding: 18px 14px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 17px;
+  border: 2px solid;
+}
+.flow-box small { display: block; font-weight: 400; font-size: 15px; color: #666; margin-top: 6px; line-height: 1.5; }
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: var(--primary);
+  font-weight: 900;
+}
+
+/* ═══════════════════ */
+/*  ALERT              */
+/* ═══════════════════ */
+.alert {
+  background: #fff7ed;
+  border-left: 4px solid var(--c-orange);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 17px;
+}
+.alert h5 { font-size: 17px; font-weight: 800; color: var(--c-orange); margin-bottom: 8px; }
+.alert ul { padding-left: 18px; }
+.alert li { margin-bottom: 5px; line-height: 1.6; }
+
+/* ═══════════════════ */
+/*  GALLERY            */
+/* ═══════════════════ */
+.gal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f3f4f6;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.gal-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+.gal-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: none;
+}
+.gal-img img.active { display: block; }
+.gal-cap {
+  background: #fff;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+.gal-cap-l { flex: 1; }
+.gal-cap-l h5 { font-size: 20px; font-weight: 800; }
+.gal-cap-l p { font-size: 17px; color: #666; margin-top: 2px; }
+.gal-cap-r { display: flex; align-items: center; gap: 10px; }
+.gal-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: #fff;
+  color: var(--primary);
+  font-size: 21px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gal-btn:hover { background: var(--primary); color: #fff; }
+.gal-cnt { font-size: 17px; font-weight: 700; min-width: 60px; text-align: center; }
+
+/* ═══════════════════ */
+/*  C/D SECTION        */
+/* ═══════════════════ */
+.cd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; height: 100%; }
+.cd-col {
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+}
+.cd-col h4 {
+  font-size: 19px;
+  font-weight: 900;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cd-col .cd-sub { font-size: 14px; color: #666; margin-bottom: 10px; }
+
+/* ═══════════════════ */
+/*  2-1 요약 슬라이드  */
+/* ═══════════════════ */
+.needs-strip {
+  display: grid;
+  grid-template-columns: auto repeat(4, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+.needs-strip .ns-label {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+  white-space: nowrap;
+  padding-right: 6px;
+}
+.ns-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #f8f9fb;
+}
+.ns-item .ns-n {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.ns-item.n1 { border-left: 3px solid #4a78a6; }
+.ns-item.n1 .ns-n { background: #4a78a6; }
+.ns-item.n2 { border-left: 3px solid #4a7862; }
+.ns-item.n2 .ns-n { background: #4a7862; }
+.ns-item.n3 { border-left: 3px solid #a05a3d; }
+.ns-item.n3 .ns-n { background: #a05a3d; }
+.ns-item.n4 { border-left: 3px solid #a85454; }
+.ns-item.n4 .ns-n { background: #a85454; }
+
+.sec-heading {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.pkg-main-table { width: 100%; border-collapse: collapse; font-size: 17px; }
+.pkg-main-table th {
+  background: #3a4f6b;
+  color: #fff;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 15px;
+}
+.pkg-main-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.pkg-main-table tr:hover td { background: #f9fafc; }
+.pkg-main-table td.pnum {
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  width: 40px;
+}
+.pkg-main-table .mvp-dot { color: #4a78a6; }
+.pkg-main-table .after-dot { color: #a05a3d; }
+.pkg-main-table .pname { font-weight: 800; font-size: 17px; color: #1a1a2e; }
+
+/* 방법론 가로 */
+.method-row-h {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.mrh {
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mrh-tag {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.mrh-name { font-size: 16px; font-weight: 900; color: #1a1a2e; flex-shrink: 0; }
+.mrh-desc { font-size: 13px; color: #555; flex: 1 1 100%; line-height: 1.5; }
+
+.mrh-a { background: #f3f6fa; border-color: #4a78a6; }
+.mrh-a .mrh-tag { background: #4a78a6; }
+.mrh-b { background: #f3f9f5; border-color: #4a7862; }
+.mrh-b .mrh-tag { background: #4a7862; }
+.mrh-c { background: #faf5f0; border-color: #a05a3d; }
+.mrh-c .mrh-tag { background: #a05a3d; }
+.mrh-d { background: #f6f3fa; border-color: #6b4a8a; }
+.mrh-d .mrh-tag { background: #6b4a8a; }
+
+/* ═══════════════════ */
+/*  SCOPE MATRIX (1-1) */
+/* ═══════════════════ */
+.scope-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 100%;
+}
+.scope-card {
+  border-radius: 14px;
+  border: 2px solid;
+  display: grid;
+  grid-template-rows: auto 3fr 2fr;
+  overflow: hidden;
+  height: 100%;
+}
+.mvp-card { border-color: #4a78a6; background: #fff; }
+.after-card { border-color: #a05a3d; background: #fff; }
+
+.scope-head {
+  padding: 14px 20px;
+  font-size: 23px;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mvp-head { background: #3a4f6b; }
+.after-head { background: #8a5a3d; }
+.scope-badge { font-size: 18px; }
+
+.scope-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 0;
+}
+.scope-row:last-of-type { border-bottom: none; }
+
+.scope-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  padding: 4px 6px;
+}
+.mvp-user { background: #d9e3ef; color: #3a4f6b; }
+.mvp-user-light { background: #eef2f7; color: #3a4f6b; }
+.after-user { background: #ead8c8; color: #8a5a3d; }
+.after-user-light { background: #f5ede3; color: #8a5a3d; }
+
+.scope-cells {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+.scope-cell {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 4px 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.scope-cell:last-child { border-bottom: none; }
+.scope-cat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 800;
+  width: 80px;
+  text-align: center;
+}
+.mvp-cat { background: #d9e3ef; color: #3a4f6b; }
+.after-cat { background: #ead8c8; color: #8a5a3d; }
+
+.scope-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.scope-list li {
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 1px 0 1px 16px;
+  position: relative;
+  color: #1f2937;
+  white-space: nowrap;
+}
+.scope-list li::before {
+  content: '•';
+  position: absolute;
+  left: 2px;
+  font-weight: 900;
+  color: #6b7280;
+  font-size: 19px;
+}
+.scope-list li u { text-decoration: underline; text-underline-offset: 2px; }
+
+.scope-footnote {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #8a5a3d;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* ═══════════════════ */
+/*  RESPONSIVE         */
+/* ═══════════════════ */
+@media (max-width: 768px) {
+  .h-date { display: none; }
+  .row2, .row3, .row4, .needs, .method-grid, .pkg-grid, .toc-grid { grid-template-columns: 1fr; }
+  .gantt-head, .gantt-row { grid-template-columns: 80px repeat(2, 1fr); }
+  .slide { padding: 20px; }
+  .s-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="h-logo">3D <span>퀴즈 게임</span> 보고</div>
+  <div class="h-nav" id="hnav"></div>
+  <div class="h-date">2026.04.16</div>
+</header>
+
+<!-- ═══ VIEWPORT ═══ -->
+<div class="viewport" id="viewport">
+
+<!-- ────── Slide 1: Cover ────── -->
+<div class="cover slide active" data-slide="1">
+  <h1>에듀테크플랫폼<br><em>3D 퀴즈 게임</em></h1>
+  <p class="cover-sub">콘텐츠 전략 &amp; 프로젝트 진행 현황 보고</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="v">7종</div><div class="l">상품 패키지</div></div>
+    <div class="cover-stat"><div class="v">4가지</div><div class="l">수급 방법론</div></div>
+    <div class="cover-stat"><div class="v">6/15</div><div class="l">MVP 론칭</div></div>
+    <div class="cover-stat"><div class="v">9월</div><div class="l">정식 오픈</div></div>
+  </div>
+  <p class="cover-date">2026.04.16 &middot; 에듀테크플랫폼기획 Core</p>
+</div>
+
+<!-- ────── Slide 2: TOC ────── -->
+<div class="slide" data-slide="2">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag" style="background:#374151;">CONTENTS</div>
+      <div class="s-title">목차</div>
+    </div>
+    <div class="s-sub">클릭하면 해당 슬라이드로 이동합니다</div>
+  </div>
+  <div class="s-body">
+    <div class="toc-grid">
+      <div class="toc-col c1">
+        <div class="toc-num">01</div>
+        <div class="toc-main">프로젝트 범위 및 일정</div>
+        <div class="toc-list">
+          <a class="toc-item" data-go="3"><span class="ti-n">1-1.</span>프로젝트 범위</a>
+          <a class="toc-item" data-go="4"><span class="ti-n">1-2.</span>프로젝트 일정</a>
+        </div>
+      </div>
+      <div class="toc-col c2">
+        <div class="toc-num">02</div>
+        <div class="toc-main">문항 콘텐츠 기획안</div>
+        <div class="toc-list">
+          <a class="toc-item" data-go="5"><span class="ti-n">2-1.</span>콘텐츠 기획 한눈에 보기</a>
+          <a class="toc-item" data-go="6"><span class="ti-n">2-2.</span>패키지</a>
+          <a class="toc-item" data-go="7"><span class="ti-n">2-3.</span>방법론</a>
+          <a class="toc-item" data-go="8"><span class="ti-n">2-4.</span>A안 진행 현황</a>
+          <a class="toc-item" data-go="9"><span class="ti-n">2-5.</span>B안 진행 현황</a>
+          <a class="toc-item" data-go="10"><span class="ti-n">2-6.</span>C/D안 추후 계획</a>
+          <a class="toc-item" data-go="11"><span class="ti-n">2-7.</span>문항 호출 플로우</a>
+        </div>
+      </div>
+      <div class="toc-col c3">
+        <div class="toc-num">03</div>
+        <div class="toc-main">사용자 플로우</div>
+        <div class="toc-list">
+          <a class="toc-item" data-go="12"><span class="ti-n">3-1.</span>교사 화면 플로우</a>
+          <a class="toc-item" data-go="13"><span class="ti-n">3-2.</span>학생 화면 플로우</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 3: 1-1 프로젝트 범위 ────── -->
+<div class="slide" data-slide="3">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t1">1-1</div>
+      <div class="s-title">프로젝트 범위</div>
+    </div>
+    <div class="s-sub">사용자(수업용/복습용) × 기능(저작/응시/결과/기타) 매트릭스</div>
+  </div>
+  <div class="s-body">
+    <div class="scope-wrap">
+      <!-- ━━━ MVP (~5월) ━━━ -->
+      <div class="scope-card mvp-card">
+        <div class="scope-head mvp-head">
+          <span class="scope-badge">📌</span> MVP (~5월)
+        </div>
+
+        <!-- 수업용 -->
+        <div class="scope-row">
+          <div class="scope-user mvp-user">수업용</div>
+          <div class="scope-cells">
+            <div class="scope-cell">
+              <div class="scope-cat mvp-cat">저작</div>
+              <ul class="scope-list">
+                <li>불러오기: <u>세트지</u> 활용 (편집/수정 불가)</li>
+              </ul>
+            </div>
+            <div class="scope-cell">
+              <div class="scope-cat mvp-cat">응시</div>
+              <ul class="scope-list">
+                <li>QR코드 학생 입장 (게스트는 데이터 휘발)</li>
+                <li>게임 Play</li>
+                <li>모니터링 (교사)</li>
+              </ul>
+            </div>
+            <div class="scope-cell">
+              <div class="scope-cat mvp-cat">결과</div>
+              <ul class="scope-list">
+                <li>랭킹: 1~5등 및 본인 등수 노출</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 복습용 -->
+        <div class="scope-row compact">
+          <div class="scope-user mvp-user-light">복습용</div>
+          <div class="scope-cells">
+            <div class="scope-cell">
+              <div class="scope-cat mvp-cat">저작</div>
+              <ul class="scope-list">
+                <li>불러오기: <u>세트지</u> 활용 (편집/수정 불가)</li>
+              </ul>
+            </div>
+            <div class="scope-cell">
+              <div class="scope-cat mvp-cat">응시</div>
+              <ul class="scope-list">
+                <li>게임 Play</li>
+                <li>오답노트</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ━━━ MVP 이후 (~8월) ━━━ -->
+      <div class="scope-card after-card">
+        <div class="scope-head after-head">
+          <span class="scope-badge">🚀</span> MVP 이후 (~8월)
+        </div>
+
+        <!-- 수업용 -->
+        <div class="scope-row">
+          <div class="scope-user after-user">수업용</div>
+          <div class="scope-cells">
+            <div class="scope-cell">
+              <div class="scope-cat after-cat">저작</div>
+              <ul class="scope-list">
+                <li>불러오기: <u>세트지</u> 활용 (편집/수정 가능)</li>
+                <li>만들기: 일반 저작툴, AI 저작툴</li>
+                <li>숙제 주기: <u>세트지</u> 설정해서 학생에게 전송</li>
+              </ul>
+            </div>
+            <div class="scope-cell">
+              <div class="scope-cat after-cat">결과</div>
+              <ul class="scope-list">
+                <li>리포트: 학생별/문항별 OX 결과 노출</li>
+              </ul>
+            </div>
+            <div class="scope-cell">
+              <div class="scope-cat after-cat">기타</div>
+              <ul class="scope-list">
+                <li>광장: 유저 간 공유 자료실</li>
+                <li>그룹 관리: 반 정보와 소속 학생 추가/편집/삭제</li>
+                <li>홈/대시보드: 교사/학생 응시 현황 및 인사이트</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 복습용 -->
+        <div class="scope-row compact">
+          <div class="scope-user after-user-light">복습용</div>
+          <div class="scope-cells">
+            <div class="scope-cell">
+              <div class="scope-cat after-cat">결과</div>
+              <ul class="scope-list">
+                <li>리포트: 문항별 OX 결과 노출</li>
+                <li>보상 현황 및 인사이트 정보 제공</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scope-footnote">** AI 서비스의 경우 검토 결과에 따라 일정 변경 가능성 有</div>
+  </div>
+</div>
+
+<!-- ────── Slide 4: 1-2 프로젝트 일정 ────── -->
+<div class="slide" data-slide="4">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t1">1-2</div>
+      <div class="s-title">프로젝트 일정</div>
+    </div>
+    <div class="s-sub">문항 / 게임 두 트랙별 월별 진행 계획 — MVP 론칭 6/15, 정식 론칭 9월</div>
+  </div>
+  <div class="s-body">
+    <div class="gantt-new">
+      <!-- 월별 헤더 -->
+      <div class="gantt-corner"></div>
+      <div class="gm g4">4월 기획</div>
+      <div class="gm g5">5월 개발</div>
+      <div class="gm g6">6월 베타 서비스 오픈</div>
+      <div class="gm g78">7, 8월 고도화</div>
+      <div class="gm g9">9월 정식 서비스 오픈</div>
+
+      <!-- 문항 구축 -->
+      <div class="gtrack tcbs">문항<br>구축</div>
+      <div class="gcell" style="grid-column: span 2;">
+        <div class="gcell-title">문항 풀 확보</div>
+        <ul class="gcell-list">
+          <li>CBS 문항 (A안)</li>
+          <li>공부력 문항 (B안)</li>
+        </ul>
+      </div>
+      <div class="gcell accent-launch">
+        <div class="gcell-title">⭐ MVP 론칭 (6/15)</div>
+        <ul class="gcell-list">
+          <li>레디메이드 세트지 사용자 검증 (UT)</li>
+          <li>기타 의견 수렴</li>
+        </ul>
+      </div>
+      <div class="gcell">
+        <div class="gcell-title">문항 풀 확장</div>
+        <ul class="gcell-list">
+          <li>이외 문항 (C, D안)</li>
+        </ul>
+      </div>
+      <div class="gcell accent-final" style="grid-row: span 2;">
+        <div class="gcell-title">⭐ 서비스 정식 론칭</div>
+        <ul class="gcell-list">
+          <li>전 과목 / 전 기능</li>
+          <li>풀 패키지 론칭</li>
+        </ul>
+      </div>
+
+      <!-- 게임 구축 -->
+      <div class="gtrack tgame">게임<br>구축</div>
+      <div class="gcell">
+        <div class="gcell-title">메인 플로우</div>
+        <ul class="gcell-list">
+          <li>기획, 디자인, 퍼블</li>
+          <li>구조 개발</li>
+          <li>기능 구현</li>
+        </ul>
+      </div>
+      <div class="gcell">
+        <div class="gcell-title">MVP 개발 (5/29)</div>
+        <ul class="gcell-list">
+          <li>통합 테스트 검수</li>
+          <li>SSO 연동 검수</li>
+        </ul>
+      </div>
+      <div class="gcell accent-launch">
+        <div class="gcell-title">⭐ MVP 론칭 (6/15)</div>
+        <ul class="gcell-list">
+          <li>수업용/복습용 론칭</li>
+          <li>서비스 사용성 검증 (UT)</li>
+          <li>기타 의견 수렴</li>
+        </ul>
+      </div>
+      <div class="gcell">
+        <div class="gcell-title">기능 추가</div>
+        <ul class="gcell-list">
+          <li>리포트, 리워드 등</li>
+          <li>LMS 전반 구축</li>
+          <li>통합 테스트 검수</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 5: 2-1 콘텐츠 기획 한눈에 보기 ────── -->
+<div class="slide" data-slide="5">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-1</div>
+      <div class="s-title">콘텐츠 기획 한눈에 보기</div>
+    </div>
+    <div class="s-sub">교사 핵심 니즈 → 상품 패키지 7종 → 수급 방법론 4가지</div>
+  </div>
+  <div class="s-body" style="display:flex; flex-direction:column; gap:20px;">
+
+    <!-- 1. 교사 핵심 니즈 (컴팩트 띠) -->
+    <div class="needs-strip">
+      <div class="ns-label">📊 교사 핵심 니즈 TOP 4</div>
+      <div class="ns-item n1"><span class="ns-n">1</span> 교과과정 연계</div>
+      <div class="ns-item n2"><span class="ns-n">2</span> 아이스브레이킹</div>
+      <div class="ns-item n3"><span class="ns-n">3</span> 시사·일반 상식</div>
+      <div class="ns-item n4"><span class="ns-n">4</span> 시험 대비</div>
+    </div>
+
+    <!-- 2. 상품 패키지 (메인) -->
+    <div style="display:flex; flex-direction:column;">
+      <div class="sec-heading">🎁 상품 패키지 7종</div>
+      <table class="pkg-main-table">
+        <tr>
+          <th style="width:40px;">#</th>
+          <th style="width:180px;">패키지명</th>
+          <th>한줄 컨셉</th>
+          <th>타겟 대상</th>
+          <th style="width:70px;">방법</th>
+          <th style="width:90px;">단계</th>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">1</td>
+          <td class="pname">교과서 프리패스</td>
+          <td>어떤 교과서든 바로 시작</td>
+          <td>초 · 중 · 고 전체 교사</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">2</td>
+          <td class="pname">초등 올패키지</td>
+          <td>학년 하나면 전과목 끝</td>
+          <td>초등 담임 교사</td>
+          <td><span class="badge b-b">B</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">3</td>
+          <td class="pname">분위기 메이커</td>
+          <td>틀면 끝, 반응은 폭발</td>
+          <td>전체 교사 (아이스브레이킹)</td>
+          <td><span class="badge b-b">B</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">4</td>
+          <td class="pname">과목 직격탄</td>
+          <td>수학은 수학만, 딱 맞게</td>
+          <td>중 · 고 교과 담당</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">5</td>
+          <td class="pname">시즌 이벤트</td>
+          <td>3월 신학기부터 졸업까지</td>
+          <td>전체 교사</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">6</td>
+          <td class="pname">시험 저격수</td>
+          <td>시험 전날도 이걸로</td>
+          <td>중 · 고 교과 담당</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">7</td>
+          <td class="pname">내 교재 그대로</td>
+          <td>오투도 완자도 게임으로</td>
+          <td>학원 · 개인 학습자</td>
+          <td><span class="badge b-c">C</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 3. 방법론 (가로 한 줄) -->
+    <div>
+      <div class="sec-heading">⚙️ 문항 수급 방법론 4가지</div>
+      <div class="method-row-h">
+        <div class="mrh mrh-a">
+          <div class="mrh-tag">A안</div>
+          <div class="mrh-name">CBS 컨버트</div>
+          <div class="mrh-desc">AIDT/비바샘 기존 문항 → 게임 문항 변환</div>
+          <span class="badge b-mvp">MVP</span>
+        </div>
+        <div class="mrh mrh-b">
+          <div class="mrh-tag">B안</div>
+          <div class="mrh-name">공부력 IP</div>
+          <div class="mrh-desc">공부력 문항 풀 → 학년별/테마별 세트지</div>
+          <span class="badge b-mvp">MVP</span>
+        </div>
+        <div class="mrh mrh-c">
+          <div class="mrh-tag">C안</div>
+          <div class="mrh-name">PDF OCR</div>
+          <div class="mrh-desc">교재 PDF → OCR → CBS → 게임화</div>
+          <span class="badge b-after">MVP 이후</span>
+        </div>
+        <div class="mrh mrh-d">
+          <div class="mrh-tag">D안</div>
+          <div class="mrh-name">AI 자동 생성</div>
+          <div class="mrh-desc">GPT · 보인 · 레스퍼 → 자동 문항 생성</div>
+          <span class="badge b-future">추후</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 6: 2-2 상품 라인업 7종 상세 ────── -->
+<div class="slide" data-slide="6">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-2</div>
+      <div class="s-title">패키지</div>
+    </div>
+    <div class="s-sub">패키지별 타겟 / 1·2안 / 활용 예시</div>
+  </div>
+  <div class="s-body" style="display:flex; flex-direction:column; gap:14px;">
+    <!-- MVP 그룹 -->
+    <div style="background:#ecfdf5; border-radius:14px; padding:14px 16px; border:2px solid var(--c-green);">
+      <div style="font-size:17px; font-weight:800; color:var(--c-green); margin-bottom:10px;">▎MVP (~5월) — 교사 핵심 니즈 즉시 대응</div>
+      <div class="row3">
+        <div class="pkg-card" style="border-color:var(--c-green);">
+          <div class="pn"><span class="pic" style="background:var(--c-blue);">1</span> 교과서 프리패스</div>
+          <div class="pcc">어떤 교과서든 바로 시작</div>
+          <div class="pt"><strong>타겟:</strong> 초/중/고 전체 교사</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-blue);">1안 A.</strong> AIDT/비바샘 → 컨버트<br>
+            <strong style="color:var(--c-purple);">2안 D.</strong> 지식요인별 자동 매핑
+          </div>
+          <div class="pe">예: 중3 수학 인수분해 / 고1 영어 독해</div>
+        </div>
+        <div class="pkg-card" style="border-color:var(--c-green);">
+          <div class="pn"><span class="pic" style="background:var(--c-green);">2</span> 초등 올패키지</div>
+          <div class="pcc">학년 하나면 전과목 끝</div>
+          <div class="pt"><strong>타겟:</strong> 초등 담임 교사</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-green);">1안 B.</strong> 공부력 → 학년별 편성<br>
+            <strong style="color:var(--c-purple);">2안 D.</strong> 학년별 자동 큐레이팅
+          </div>
+          <div class="pe">예: 초3 → 국·수·사·과 전과목 세트</div>
+        </div>
+        <div class="pkg-card" style="border-color:var(--c-green);">
+          <div class="pn"><span class="pic" style="background:var(--c-orange);">3</span> 분위기 메이커</div>
+          <div class="pcc">틀면 끝, 반응은 폭발</div>
+          <div class="pt"><strong>타겟:</strong> 전체 교사 (아이스브레이킹)</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-green);">1안 B.</strong> 넌센스/오늘의 상식<br>
+            <strong style="color:var(--c-purple);">2안 D.</strong> OpenAI+Wiki 시사 자동
+          </div>
+          <div class="pe">예: 아재 개그 배틀 / 이번 주 시사 퀴즈</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MVP 이후 그룹 -->
+    <div style="flex:1; display:flex; flex-direction:column; background:#fff7ed; border-radius:14px; padding:14px 16px; border:2px solid var(--c-orange);">
+      <div style="font-size:17px; font-weight:800; color:var(--c-orange); margin-bottom:10px;">▎MVP 이후 (~8월) — 대상/활용 범위 확장</div>
+      <div class="row4" style="flex:1;">
+        <div class="pkg-card" style="border-color:var(--c-orange);">
+          <div class="pn"><span class="pic" style="background:var(--c-red);">4</span> 과목 직격탄</div>
+          <div class="pcc">수학은 수학만, 딱 맞게</div>
+          <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-blue);">A.</strong> 비바샘 → 지식요인별<br>
+            <strong style="color:var(--c-purple);">D.</strong> 보인/레스퍼 유사 문항
+          </div>
+          <div class="pe">예: 이차방정식 / 관계대명사</div>
+        </div>
+        <div class="pkg-card" style="border-color:var(--c-orange);">
+          <div class="pn"><span class="pic" style="background:var(--c-purple);">5</span> 시즌 이벤트</div>
+          <div class="pcc">3월 신학기 ~ 12월 졸업</div>
+          <div class="pt"><strong>타겟:</strong> 전체 교사</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-blue);">A.</strong> 월별 행사 테마 세트지<br>
+            <strong style="color:var(--c-purple);">D.</strong> 교사 저작 → 광장 UGC
+          </div>
+          <div class="pe">예: 한글날 맞춤법 / 과학의 날 배틀</div>
+        </div>
+        <div class="pkg-card" style="border-color:var(--c-orange);">
+          <div class="pn"><span class="pic" style="background:#64748b;">6</span> 시험 저격수</div>
+          <div class="pcc">시험 전날도 이걸로</div>
+          <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-blue);">A.</strong> 단원/난이도 태그<br>
+            <strong style="color:var(--c-purple);">D.</strong> 기출 패턴 출제 예상
+          </div>
+          <div class="pe">예: 중간고사 2주전 수학 기본/심화</div>
+        </div>
+        <div class="pkg-card" style="border-color:var(--c-orange);">
+          <div class="pn"><span class="pic" style="background:var(--c-cyan);">7</span> 내 교재 그대로</div>
+          <div class="pcc">오투도 완자도 게임으로</div>
+          <div class="pt"><strong>타겟:</strong> 학원/개인 학습자</div>
+          <div style="font-size:16px; line-height:1.7;">
+            <strong style="color:var(--c-orange);">C.</strong> 교재 PDF → OCR<br>
+            <strong style="color:var(--c-purple);">D.</strong> AI OCR 자동화 + 태깅
+          </div>
+          <div class="pe">예: 오투 생물 / 완자 수학</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 7: 2-3 방법론 4가지 비교 ────── -->
+<div class="slide" data-slide="7">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-3</div>
+      <div class="s-title">방법론</div>
+    </div>
+    <div class="s-sub">A / B / C / D 전체 비교 — MVP → 확장 → 최종 목표</div>
+  </div>
+  <div class="s-body">
+    <table style="font-size:16px;">
+      <tr>
+        <th style="width:110px;">항목</th>
+        <th style="background:var(--c-blue);">A. CBS 컨버트</th>
+        <th style="background:var(--c-green);">B. 공부력 IP</th>
+        <th style="background:var(--c-orange);">C. PDF OCR</th>
+        <th style="background:var(--c-purple);">D. AI 자동생성</th>
+      </tr>
+      <tr>
+        <td><strong>단계</strong></td>
+        <td><span class="badge b-mvp">MVP</span></td>
+        <td><span class="badge b-mvp">MVP</span></td>
+        <td><span class="badge b-after">MVP 이후</span></td>
+        <td><span class="badge b-future">추후</span></td>
+      </tr>
+      <tr>
+        <td><strong>적용 패키지</strong></td>
+        <td>① 교과서 프리패스<br>④ 과목 직격탄<br>⑤ 시즌 이벤트<br>⑥ 시험 저격수</td>
+        <td>② 초등 올패키지<br>③ 분위기 메이커</td>
+        <td>⑦ 내 교재 그대로</td>
+        <td>전 패키지</td>
+      </tr>
+      <tr>
+        <td><strong>컨셉</strong></td>
+        <td>기존 CBS 보유 문항 빠른 게임화</td>
+        <td>공부력 IP 활용 학년별/테마별 세트</td>
+        <td>교재 OCR 디지털화 후 게임화</td>
+        <td>지식요인 단위 AI 자동 문항 생성</td>
+      </tr>
+      <tr>
+        <td><strong>타겟 과목</strong></td>
+        <td>국영수사과 전과목</td>
+        <td>초등 전과목 (영·국·한국사·어휘·한자·수)</td>
+        <td>전과목 (교재 기반)</td>
+        <td>중등 국영수사과</td>
+      </tr>
+      <tr>
+        <td><strong>활용 문항</strong></td>
+        <td>AIDT / 비바샘 CBS 문항</td>
+        <td>공부력 문항 풀</td>
+        <td>오투 / 완자 등 교재</td>
+        <td>GPT / 보인 / 레스퍼 API</td>
+      </tr>
+      <tr>
+        <td><strong>구현 방법</strong></td>
+        <td>CBS 등록 → 게임 템플릿 변환 → 교과과정 매핑</td>
+        <td>템플릿 검토 → 학년별 큐레이팅</td>
+        <td>PDF → OCR → CBS → 메타 맵핑</td>
+        <td>지식요인 정의 → 오토태깅 → AI 생성 → CBS 등록</td>
+      </tr>
+      <tr>
+        <td><strong>진행 상태</strong></td>
+        <td><span class="badge b-ing">1차 검토 중</span></td>
+        <td><span class="badge b-ing">템플릿 확인 중</span></td>
+        <td><span class="badge b-wait">미착수</span></td>
+        <td><span class="badge b-wait">미착수</span></td>
+      </tr>
+    </table>
+    <div style="margin-top:14px;">
+      <div class="flow">
+        <div class="flow-box" style="border-color:var(--c-blue); background:#eff6ff;">
+          <strong>Phase 1 (~5월)</strong>
+          <small>① 교과서별 + ② 테마별<br>A안 + B안 중심</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-orange); background:#fff7ed;">
+          <strong>Phase 2 (~8월)</strong>
+          <small>④ 과목별 + ⑦ 교재별<br>A안 확장 + C안 착수</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-purple); background:#faf5ff;">
+          <strong>최종 목표</strong>
+          <small>⑤ AI 자동 생성<br>전 패키지 자동화</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 8: 2-4 A안 진행 현황 ────── -->
+<div class="slide" data-slide="8">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-4</div>
+      <div class="s-title">A안 — CBS 문항 컨버트 진행 현황</div>
+    </div>
+    <div class="s-sub">소스: AIDT/비바샘 일반 문항 | 적용: ① 교과서 프리패스, ④ 과목 직격탄, ⑤ 시즌 이벤트, ⑥ 시험 저격수</div>
+  </div>
+  <div class="s-body">
+    <div class="row2" style="height:100%;">
+      <!-- STEP -->
+      <div style="display:flex; flex-direction:column;">
+        <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📋 STEP별 진행 현황</div>
+        <div class="steps">
+          <div class="step" style="border-left-color:var(--c-blue);">
+            <div class="sn" style="background:var(--c-blue);">01</div>
+            <div class="sb">
+              <h5>게임 템플릿 변환 1차 검토</h5>
+              <div class="sm">CBS기획운영 Cell · 4월 2주차 · <span class="badge b-done">완료</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-blue);">
+            <div class="sn" style="background:var(--c-blue);">02</div>
+            <div class="sb">
+              <h5>일반 문항 → 게임 문항 컨버팅</h5>
+              <div class="sm">CBS기획운영 Cell · 4월 3주차 · <span class="badge b-ing">진행중</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-blue);">
+            <div class="sn" style="background:var(--c-blue);">03</div>
+            <div class="sb">
+              <h5>컨버팅 문항 검수</h5>
+              <div class="sm">전략 Cell · 4월 말 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-blue);">
+            <div class="sn" style="background:var(--c-blue);">04</div>
+            <div class="sb">
+              <h5>교과과정 단위 묶기 → 세트지 편성</h5>
+              <div class="sm">(미정) · 5월 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-blue);">
+            <div class="sn" style="background:var(--c-blue);">05</div>
+            <div class="sb">
+              <h5>게임 DB 적재 → 서비스 제공</h5>
+              <div class="sm">개발 Cell · 5월 말 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 잔여업무 + 이슈 -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div>
+          <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">🔧 잔여 업무</div>
+          <table style="font-size:14px;">
+            <tr><th>업무</th><th style="width:120px;">담당</th></tr>
+            <tr><td>게임 내 5지선다 템플릿 유형 기획</td><td>전략 Cell</td></tr>
+            <tr><td>게임 내 5지선다 템플릿 유형 개발</td><td>에듀게임전략 Cell</td></tr>
+            <tr><td>AI 문항 검수 전 1차 필터링 가능 여부 확인</td><td>기술연구소</td></tr>
+          </table>
+        </div>
+        <div class="alert" style="flex:1;">
+          <h5>⚠️ 이슈사항</h5>
+          <ul>
+            <li>AIDT 세트지 일반 문항 변형 방식 → <strong>컨버팅 시 중복 문항 발생 가능</strong></li>
+            <li>5지선다 비중 높음 → <strong>게임 템플릿 내 5지선다 유형 추가 필요</strong></li>
+            <li>일반 문항 → 게임 문항 변환 시 <strong>검수/수정 등 후작업 불가피</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 9: 2-5 B안 진행 현황 ────── -->
+<div class="slide" data-slide="9">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-5</div>
+      <div class="s-title">B안 — 공부력 IP 활용 진행 현황</div>
+    </div>
+    <div class="s-sub">소스: 공부력 문항 풀 (초등 1~6학년 영어/국어/한국사/어휘/한자/수학) | 적용: ② 초등 올패키지, ③ 분위기 메이커</div>
+  </div>
+  <div class="s-body">
+    <div class="row2" style="height:100%;">
+      <!-- STEP -->
+      <div style="display:flex; flex-direction:column;">
+        <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📋 STEP별 진행 현황</div>
+        <div class="steps">
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">01</div>
+            <div class="sb">
+              <h5>공부력 문항 풀 확인 + 데이터 구조 분석</h5>
+              <div class="sm">게임 Cell · 4월 2주 · <span class="badge b-ing">진행중</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">02</div>
+            <div class="sb">
+              <h5>게임 템플릿 요구 조건 + 메타 정보 확인</h5>
+              <div class="sm">게임 Cell · 4월 2주 · <span class="badge b-ing">진행중</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">03</div>
+            <div class="sb">
+              <h5>공부력 맞춤 템플릿 추가/수정 + 이미지/음원</h5>
+              <div class="sm">게임 + CBS기획운영 Cell · 4월 3주 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">04</div>
+            <div class="sb">
+              <h5>메타정보 등록 검토 + CBS 세팅</h5>
+              <div class="sm">CBS기획운영 Cell · 4월 4주 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">05</div>
+            <div class="sb">
+              <h5>공부력 문항 → CBS 게임 템플릿 개발/탑재</h5>
+              <div class="sm">CBS기획운영 Cell · 5월~ 과목 순차 · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+          <div class="step" style="border-left-color:var(--c-green);">
+            <div class="sn" style="background:var(--c-green);">06</div>
+            <div class="sb">
+              <h5>학년별/테마별 세트지 큐레이팅 → 서비스</h5>
+              <div class="sm">콘텐츠 기획 Cell · (미정) · <span class="badge b-wait">대기</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 활용 문항 + 이슈 -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div>
+          <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📚 공부력 문항 풀 구성</div>
+          <div class="row3" style="gap:8px;">
+            <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
+              <div style="font-size:14px; color:#666;">학년</div>
+              <div style="font-size:21px; font-weight:900; color:var(--c-green);">초 1~6</div>
+            </div>
+            <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
+              <div style="font-size:14px; color:#666;">과목</div>
+              <div style="font-size:21px; font-weight:900; color:var(--c-green);">6과목</div>
+              <div style="font-size:13px; color:#888; margin-top:2px;">영·국·한국사·어휘·한자·수</div>
+            </div>
+            <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
+              <div style="font-size:14px; color:#666;">활용 패키지</div>
+              <div style="font-size:21px; font-weight:900; color:var(--c-green);">2종</div>
+              <div style="font-size:13px; color:#888; margin-top:2px;">② 올패키지, ③ 분위기</div>
+            </div>
+          </div>
+        </div>
+        <div class="alert" style="flex:1;">
+          <h5>⚠️ 이슈사항</h5>
+          <ul>
+            <li><strong>공부력 문항 활용 가능 여부 컨펌 필요</strong> (법무/라이선스 검토 포함)</li>
+            <li>교과과정 맵핑 일정 확보 필요</li>
+            <li>이미지/음원 등 리소스 재검토 필요</li>
+            <li>세트지별 문항 풀 큐레이팅 담당 확정 필요</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 10: 2-6 C/D안 ────── -->
+<div class="slide" data-slide="10">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-6</div>
+      <div class="s-title">C/D안 — 추후 진행 계획</div>
+    </div>
+    <div class="s-sub">PDF OCR 디지털화 / AI 자동 생성</div>
+  </div>
+  <div class="s-body">
+    <div class="cd-row">
+      <!-- C안 -->
+      <div class="cd-col" style="background:#fffbf5; border-color:var(--c-orange);">
+        <h4 style="color:#7c2d12;">
+          <span class="badge b-c">C안</span> PDF OCR 디지털화
+        </h4>
+        <div class="cd-sub">소스: 비상 교재 (오투/완자 등) · 적용: ⑦ 내 교재 그대로</div>
+
+        <div style="font-size:15px; font-weight:700; margin:6px 0;">📋 진행 STEP</div>
+        <div class="flow" style="font-size:14px;">
+          <div class="flow-box" style="border-color:var(--c-orange); background:#fff; padding:8px; font-size:14px;">
+            <strong>STEP 1</strong><small>PDF 소스 추출</small>
+          </div>
+          <div class="flow-arrow" style="font-size:17px;">▶</div>
+          <div class="flow-box" style="border-color:var(--c-orange); background:#fff; padding:8px; font-size:14px;">
+            <strong>STEP 2</strong><small>OCR → CBS 문항화</small>
+          </div>
+          <div class="flow-arrow" style="font-size:17px;">▶</div>
+          <div class="flow-box" style="border-color:var(--c-orange); background:#fff; padding:8px; font-size:14px;">
+            <strong>STEP 3</strong><small>메타 맵핑</small>
+          </div>
+          <div class="flow-arrow" style="font-size:17px;">▶</div>
+          <div class="flow-box" style="border-color:var(--c-orange); background:#fff; padding:8px; font-size:14px;">
+            <strong>STEP 4</strong><small>게임 세트지 배포</small>
+          </div>
+        </div>
+
+        <div class="alert" style="margin-top:12px; flex:1;">
+          <h5>⚠️ 후순위 사유 & 이슈</h5>
+          <ul>
+            <li>주 타겟인 공교육 선생님 대상이 아님 (학원/개인)</li>
+            <li>전 과정 <strong>검수 인력 필요</strong> (프리랜서 채용/비용 발생)</li>
+            <li>PDF 저작권 확인 필요</li>
+            <li>STEP 3 메타정보 맵핑 자동화 여부 기술 협의 필요</li>
+            <li>AI 1차 필터링 가능 여부 지속 검토 예정</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- D안 -->
+      <div class="cd-col" style="background:#fdfaff; border-color:var(--c-purple);">
+        <h4 style="color:#581c87;">
+          <span class="badge b-d">D안</span> AI 자동 생성
+        </h4>
+        <div class="cd-sub">소스: GPT / 보인(수학) / 레스퍼(영어) · 2022 개정 중등 전과목, 지식요인 단위</div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px;">
+          <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:4px;">과목별 지식요인</div>
+            <table style="font-size:13px;">
+              <tr><th>과목</th><th>지식요인</th></tr>
+              <tr><td>국어</td><td>어휘/규범/문법</td></tr>
+              <tr><td>영어</td><td>어휘/문법/표현</td></tr>
+              <tr><td>수학</td><td>연산/개념/도형</td></tr>
+              <tr><td>사회</td><td>용어/인물·사건/개념</td></tr>
+              <tr><td>과학</td><td>용어/인물·사건/개념</td></tr>
+            </table>
+          </div>
+          <div>
+            <div style="font-size:14px; font-weight:700; margin-bottom:4px;">AI 파트너별 역할</div>
+            <table style="font-size:13px;">
+              <tr><th>파트너</th><th>역할</th></tr>
+              <tr><td><strong>보인</strong> (수)</td><td>수식 렌더링/유사 문항</td></tr>
+              <tr><td><strong>레스퍼</strong> (영)</td><td>원어민 음원/어휘</td></tr>
+              <tr><td><strong>GPT</strong></td><td>국·사·과 자동 생성</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="alert" style="margin-top:10px; flex:1; background:#faf5ff; border-color:var(--c-purple);">
+          <h5 style="color:var(--c-purple);">⚠️ 후순위 사유 & 이슈</h5>
+          <ul>
+            <li><strong>보인/레스퍼 계약 및 라이선스 협의 필요</strong></li>
+            <li>실시간 생성 vs CBS 사전 등록 방식 결정 필요</li>
+            <li>지식요인 분류 기준 정의 선행 필요 (기술연구소+기획)</li>
+            <li>오토태깅 가능 여부 기술 확인 필요</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 11: 2-7 호출 플로우 ────── -->
+<div class="slide" data-slide="11">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t2">2-7</div>
+      <div class="s-title">문항 콘텐츠 호출 플로우</div>
+    </div>
+    <div class="s-sub">문항 소스 → CBS → 게임 DB → 최종 서비스</div>
+  </div>
+  <div class="s-body" style="display:flex; flex-direction:column; gap:14px;">
+    <!-- DB 흐름 -->
+    <div style="background:#f8f9ff; border-radius:14px; padding:20px;">
+      <div style="text-align:center; font-size:21px; font-weight:800; color:var(--primary); margin-bottom:18px;">DB 문항 흐름</div>
+      <div class="flow">
+        <div class="flow-box" style="border-color:var(--c-blue); background:#eff6ff;">
+          <strong>① 문항 소스</strong>
+          <small>CBS 문항 (A) — AIDT/비바샘<br>공부력 문항 (B)</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-orange); background:#fff7ed;">
+          <strong>② CBS 문제은행</strong>
+          <small>게임 템플릿 변환<br>문항 데이터베이스</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-green); background:#ecfdf5;">
+          <strong>③ 게임 뷰어 Preview</strong>
+          <small>CBS 내 문항 확인<br>검수 단계</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-purple); background:#faf5ff;">
+          <strong>④ 게임 스토리지</strong>
+          <small>CBS → 게임 DB 배포<br>(CBS 직접 호출 X)</small>
+        </div>
+        <div class="flow-arrow">▶</div>
+        <div class="flow-box" style="border-color:var(--c-red); background:#fef2f2;">
+          <strong>⑤ 게임 뷰어 Play</strong>
+          <small>최종 서비스</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- 핵심 원칙 -->
+    <div style="flex:1;">
+      <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📌 핵심 원칙</div>
+      <div class="row2" style="gap:14px;">
+        <div class="box" style="border-color:var(--c-blue); background:#eff6ff;">
+          <div class="box-title" style="color:var(--c-blue);">📂 문항 처리 구조</div>
+          <ul class="lst">
+            <li>모든 문항은 <strong>CBS(문제은행) 기반</strong>으로 관리</li>
+            <li>6월 버전은 <strong>공부력 문항</strong> 사용</li>
+            <li>신규 문항도 <strong>반드시 CBS 등록 후 사용</strong></li>
+          </ul>
+        </div>
+        <div class="box" style="border-color:var(--c-purple); background:#faf5ff;">
+          <div class="box-title" style="color:var(--c-purple);">🔄 단일 소스 원칙</div>
+          <ul class="lst">
+            <li>CBS 입력 → 게임 DB 적재 → 게임에서 호출</li>
+            <li>CBS 직접 호출 없이 <strong>게임 DB를 단일 소스</strong>로 사용</li>
+            <li>CBS 내 게임 뷰어 Preview에서 검수 후 배포</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 12: 3-1 교사 화면 ────── -->
+<div class="slide" data-slide="12">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t3">3-1</div>
+      <div class="s-title">사용자 플로우 — 교사 화면 (WEB)</div>
+    </div>
+    <div class="s-sub">SSO 통합 로그인 → 통합 플랫폼 → 3D 퀴즈 게임 (별도 도메인)</div>
+  </div>
+  <div class="s-body" style="display:flex; flex-direction:column;">
+    <div class="gal">
+      <div class="gal-img" id="gimg-t">
+        <img src="slides_png/slide_31.png" class="active" data-cap="교사 화면 메인 플로우|260407 기준 게임 Cell 최신 기획안 — 교사 화면 시작">
+        <img src="slides_png/slide_32.png" data-cap="메인 화면|문제 선택하기 활성화 / 좌측 상단 메뉴 버튼으로 기능 페이지 이동">
+        <img src="slides_png/slide_33.png" data-cap="문항 확인|돋보기 버튼으로 문항 확인 / 개념 · 몰입 · 심화 문제 구분">
+        <img src="slides_png/slide_34.png" data-cap="문제 빠른 탐색|좌우 버튼으로 문제 빠르게 확인 / 문제 평가 가능">
+        <img src="slides_png/slide_35.png" data-cap="세트지 단위 평가|세트지 단위 평가 / 피드백 수집 → AI 문항 개선 활용">
+        <img src="slides_png/slide_36.png" data-cap="문제 선택 완료|확인한 문제는 제목 진하게 표시 / 선택 시 화면 닫힘">
+        <img src="slides_png/slide_37.png" data-cap="게임 만들기|게임 만들기 버튼 활성화 + 애니메이션">
+        <img src="slides_png/slide_38.png" data-cap="QR 코드 출력|QR 띄우기 버튼 → 팝업 출력">
+        <img src="slides_png/slide_39.png" data-cap="QR 화면 띄우기 (전자칠판)|새 창으로 QR 코드 출력 (UNITY) — 교실 전자칠판 + 선생님 노트북 팝업">
+        <img src="slides_png/slide_40.png" data-cap="학생 접속 대기|QR 보고 학생들이 접속">
+        <img src="slides_png/slide_41.png" data-cap="게임 시작|2명 이상 접속 시 시작 버튼 활성화 / 하트로 인기 게임 표시">
+        <img src="slides_png/slide_42.png" data-cap="학생 게임 플레이 모니터링 (전자칠판)|아이들 게임 플레이 화면 + 전체 학생 현황 — 전자칠판 + 선생님 노트북">
+        <img src="slides_png/slide_43.png" data-cap="실시간 모니터링|찍기의심/연속오답/낮은정답 표시 / 실시간 OX / 종이비행기 메시지">
+        <img src="slides_png/slide_44.png" data-cap="응원 메시지|이모티콘 + 메시지 선택 → 학생에게 응원 전달 (한 게임 더?)">
+        <img src="slides_png/slide_45.png" data-cap="학생 개별 메시지 (전자칠판)|학생 개별로 이모티콘 메시지 전송 가능">
+        <img src="slides_png/slide_46.png" data-cap="전체 이모티콘 메시지|전체 이모티콘 메시지 보내기 / 문제 분석 버튼">
+        <img src="slides_png/slide_47.png" data-cap="잘했어 화면 (전자칠판)|선생님이 보낸 응원 메시지가 게임 플레이 화면에 출력 — 잘했어!">
+        <img src="slides_png/slide_48.png" data-cap="문제 분석|정답률/틀린 학생/평균 풀이 시간 — 80%↑정상, 70~79%주의, 69%↓위험">
+      </div>
+      <div class="gal-cap">
+        <div class="gal-cap-l">
+          <h5 id="gtit-t">교사 화면 메인 플로우</h5>
+          <p id="gdsc-t">260407 기준 게임 Cell 최신 기획안 — 교사 화면 시작</p>
+        </div>
+        <div class="gal-cap-r">
+          <button class="gal-btn" onclick="navGal('t', -1)">←</button>
+          <span class="gal-cnt" id="gcnt-t">1 / 18</span>
+          <button class="gal-btn" onclick="navGal('t', 1)">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────── Slide 13: 3-2 학생 화면 ────── -->
+<div class="slide" data-slide="13">
+  <div class="s-head">
+    <div class="s-head-l">
+      <div class="s-tag t3">3-2</div>
+      <div class="s-title">사용자 플로우 — 학생 화면 (WEB · 게스트 계정)</div>
+    </div>
+    <div class="s-sub">QR 입장 → 캐릭터 선택 → 게임 → 결과 화면</div>
+  </div>
+  <div class="s-body" style="display:flex; flex-direction:column;">
+    <div class="gal">
+      <div class="gal-img" id="gimg-s">
+        <img src="slides_png/slide_49.png" class="active" data-cap="학생 화면 메인 플로우|260407 기준 게임 Cell 최신 기획안 — 학생 화면 (게스트 계정) 시작">
+        <img src="slides_png/slide_50.png" data-cap="방 입장|즐겨찾기 해놓으면 방코드만 넣으면 바로 입장">
+        <img src="slides_png/slide_51.png" data-cap="캐릭터 & 이름 설정|캐릭터 선택 + 사용할 이름 입력">
+        <img src="slides_png/slide_52.png" data-cap="게임 투표|하고싶은 게임에 투표 / 선택 중인 친구도 입장 학생으로 표시">
+        <img src="slides_png/slide_53.png" data-cap="게임 대기|대기 시간 후 게임 시작">
+        <img src="slides_png/slide_54.png" data-cap="게임 진행|게임 플레이 화면">
+        <img src="slides_png/slide_55.png" data-cap="결과 캐릭터 카드|노력/잘하고있어/최고야/완벽해 카드 수집 (회원가입 필요)">
+        <img src="slides_png/slide_56.png" data-cap="랭킹 & 시상식|5등까지 표시 / 축하해&잘했어 → 시상식 화면 (축하해는 본인 이름 표시, 잘했어는 미표시)">
+        <img src="slides_png/slide_57.png" data-cap="팀전 결과|팀전/다팀전은 이긴 팀만 표시">
+      </div>
+      <div class="gal-cap">
+        <div class="gal-cap-l">
+          <h5 id="gtit-s">학생 화면 메인 플로우</h5>
+          <p id="gdsc-s">260407 기준 게임 Cell 최신 기획안 — 학생 화면 (게스트 계정) 시작</p>
+        </div>
+        <div class="gal-cap-r">
+          <button class="gal-btn" onclick="navGal('s', -1)">←</button>
+          <span class="gal-cnt" id="gcnt-s">1 / 9</span>
+          <button class="gal-btn" onclick="navGal('s', 1)">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /viewport -->
+
+<!-- ═══ FOOTER NAV ═══ -->
+<div class="foot">
+  <span class="f-count" id="fcount">1 / 13</span>
+  <button class="f-btn" id="fprev" onclick="goSlide(-1)">‹</button>
+  <button class="f-btn" id="fnext" onclick="goSlide(1)">›</button>
+</div>
+
+<script>
+// ═══ CHIP NAV ═══
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const slideTitles = [
+  '표지', '목차',
+  '1-1 범위', '1-2 일정',
+  '2-1 요약', '2-2 패키지', '2-3 방법론', '2-4 A안', '2-5 B안', '2-6 C/D안', '2-7 플로우',
+  '3-1 교사', '3-2 학생'
+];
+const hnav = document.getElementById('hnav');
+slideTitles.forEach((t, i) => {
+  const b = document.createElement('button');
+  b.className = 'h-chip';
+  b.textContent = t;
+  b.onclick = () => showSlide(i + 1);
+  hnav.appendChild(b);
+});
+
+let cur = 1;
+function showSlide(n) {
+  if (n < 1) n = 1;
+  if (n > total) n = total;
+  cur = n;
+  slides.forEach((s, i) => s.classList.toggle('active', (i + 1) === n));
+  document.getElementById('fcount').textContent = n + ' / ' + total;
+  document.getElementById('fprev').disabled = (n === 1);
+  document.getElementById('fnext').disabled = (n === total);
+  document.querySelectorAll('.h-chip').forEach((c, i) => c.classList.toggle('active', (i + 1) === n));
+}
+function goSlide(dir) { showSlide(cur + dir); }
+
+// TOC click
+document.querySelectorAll('[data-go]').forEach(el => {
+  el.onclick = () => showSlide(parseInt(el.dataset.go));
+});
+
+// Keyboard
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') goSlide(1);
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') goSlide(-1);
+});
+
+// ═══ GALLERY ═══
+const galStates = { t: 0, s: 0 };
+function navGal(key, dir) {
+  const imgs = document.querySelectorAll('#gimg-' + key + ' img');
+  let idx = galStates[key] + dir;
+  if (idx < 0) idx = 0;
+  if (idx >= imgs.length) idx = imgs.length - 1;
+  galStates[key] = idx;
+  imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+  const cap = imgs[idx].dataset.cap.split('|');
+  document.getElementById('gtit-' + key).textContent = cap[0];
+  document.getElementById('gdsc-' + key).textContent = cap[1];
+  document.getElementById('gcnt-' + key).textContent = (idx + 1) + ' / ' + imgs.length;
+}
+
+// init
+showSlide(1);
+</script>
+
+</body>
+</html>
