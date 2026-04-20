@@ -29,7 +29,7 @@ body {
   background: #f3f4f6;
   color: var(--text);
   line-height: 1.6;
-  font-size: 19px;
+  font-size: 21px;
   overflow: hidden;
 }
 
@@ -47,7 +47,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .h-logo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   margin-right: 24px;
   white-space: nowrap;
@@ -67,7 +67,7 @@ body {
   border: none;
   padding: 6px 14px;
   border-radius: 16px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
@@ -77,7 +77,7 @@ body {
 .h-chip:hover { background: rgba(255,255,255,0.18); color: #fff; }
 .h-chip.active { background: #6ee7b7; color: var(--primary); }
 .h-date {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(255,255,255,0.5);
   margin-left: 16px;
   white-space: nowrap;
@@ -96,7 +96,7 @@ body {
   width: 100%;
   height: 100%;
   background: #fff;
-  padding: 44px 80px 90px;
+  padding: 52px 100px 100px;
   display: none;
   flex-direction: column;
   overflow: hidden;
@@ -119,7 +119,7 @@ body {
 }
 .s-head-l { display: flex; align-items: baseline; gap: 16px; }
 .s-tag {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #fff;
@@ -130,13 +130,13 @@ body {
 .s-tag.t2 { background: var(--c-orange); }
 .s-tag.t3 { background: var(--c-purple); }
 .s-title {
-  font-size: 33px;
+  font-size: 35px;
   font-weight: 900;
   color: var(--text);
   line-height: 1.2;
 }
 .s-sub {
-  font-size: 17px;
+  font-size: 19px;
   color: var(--text-light);
 }
 
@@ -156,14 +156,14 @@ body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   z-index: 90;
 }
-.f-count { font-size: 17px; font-weight: 700; color: var(--primary); }
+.f-count { font-size: 19px; font-weight: 700; color: var(--primary); }
 .f-btn {
   width: 44px; height: 44px;
   border-radius: 50%;
   border: none;
   background: var(--primary);
   color: #fff;
-  font-size: 21px;
+  font-size: 23px;
   cursor: pointer;
   transition: opacity 0.15s;
 }
@@ -200,7 +200,7 @@ body {
   border: 1.5px solid rgba(255,255,255,0.3);
   padding: 6px 24px;
   border-radius: 30px;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 3px;
   font-weight: 500;
   color: rgba(255,255,255,0.75);
@@ -214,7 +214,7 @@ body {
 }
 .cover h1 em { font-style: normal; color: #6ee7b7; }
 .cover-sub {
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 300;
   color: rgba(255,255,255,0.65);
   margin-bottom: 48px;
@@ -231,9 +231,9 @@ body {
   padding: 16px 28px;
   text-align: center;
 }
-.cover-stat .v { font-size: 31px; font-weight: 900; }
-.cover-stat .l { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 1px; }
-.cover-date { margin-top: 56px; font-size: 16px; color: rgba(255,255,255,0.4); }
+.cover-stat .v { font-size: 33px; font-weight: 900; }
+.cover-stat .l { font-size: 16px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 1px; }
+.cover-date { margin-top: 56px; font-size: 18px; color: rgba(255,255,255,0.4); }
 
 /* ═══════════════════ */
 /*  TOC SLIDE          */
@@ -246,41 +246,43 @@ body {
 }
 .toc-col {
   border-radius: 16px;
-  padding: 24px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   border: 2px solid;
+  overflow: hidden;
+  min-height: 0;
 }
 .toc-col.c1 { background: #f3f6fa; border-color: var(--c-blue); }
 .toc-col.c2 { background: #faf5f0; border-color: var(--c-orange); }
 .toc-col.c3 { background: #f6f3fa; border-color: var(--c-purple); }
 .toc-num {
-  font-size: 75px;
+  font-size: 56px;
   font-weight: 900;
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .toc-col.c1 .toc-num { color: var(--c-blue); }
 .toc-col.c2 .toc-num { color: var(--c-orange); }
 .toc-col.c3 .toc-num { color: var(--c-purple); }
 .toc-main {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 2px solid rgba(0,0,0,0.08);
 }
 .toc-list { flex: 1; }
 .toc-item {
   display: block;
-  padding: 11px 14px;
-  font-size: 19px;
+  padding: 7px 12px;
+  font-size: 18px;
   color: #444;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
   text-decoration: none;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 500;
 }
 .toc-item:hover { background: rgba(255,255,255,0.85); color: #000; transform: translateX(4px); }
@@ -301,7 +303,7 @@ body {
   flex-direction: column;
 }
 .box-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   margin-bottom: 14px;
   display: flex;
@@ -309,7 +311,7 @@ body {
   gap: 8px;
 }
 .box-title .bt-tag {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 4px;
@@ -318,7 +320,7 @@ body {
 
 .lst { list-style: none; padding: 0; flex: 1; }
 .lst li {
-  font-size: 18px;
+  font-size: 20px;
   padding: 7px 0;
   display: flex;
   gap: 8px;
@@ -331,7 +333,7 @@ body {
 }
 .lst li .lbl {
   display: inline-block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   padding: 3px 9px;
   border-radius: 4px;
@@ -345,7 +347,7 @@ body {
   display: inline-block;
   padding: 3px 10px;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
 }
 .b-mvp { background: #d1fae5; color: #065f46; }
@@ -362,7 +364,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 17px;
+  font-size: 19px;
 }
 table th {
   background: var(--primary);
@@ -370,7 +372,7 @@ table th {
   padding: 11px 14px;
   text-align: left;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
 }
 table td {
   padding: 10px 14px;
@@ -398,7 +400,7 @@ table tr:hover td { background: #f9fafb; }
   text-align: center;
   color: #fff;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,7 +418,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
   text-align: center;
   line-height: 1.3;
 }
@@ -433,7 +435,7 @@ table tr:hover td { background: #f9fafb; }
   justify-content: center;
 }
 .gcell-title {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 8px;
@@ -441,7 +443,7 @@ table tr:hover td { background: #f9fafb; }
 .gcell-list {
   list-style: disc;
   padding-left: 20px;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.65;
   color: #52525b;
 }
@@ -474,14 +476,14 @@ table tr:hover td { background: #f9fafb; }
   text-align: center;
   border: 2px solid;
 }
-.need-box .nb-rank { font-size: 31px; font-weight: 900; line-height: 1; }
-.need-box .nb-name { font-size: 19px; font-weight: 800; margin-top: 6px; }
-.need-box .nb-desc { font-size: 15px; color: #666; margin-top: 4px; }
+.need-box .nb-rank { font-size: 33px; font-weight: 900; line-height: 1; }
+.need-box .nb-name { font-size: 21px; font-weight: 800; margin-top: 6px; }
+.need-box .nb-desc { font-size: 17px; color: #666; margin-top: 4px; }
 
 /* ═══════════════════ */
 /*  PACKAGE TABLE      */
 /* ═══════════════════ */
-.pkg-table { font-size: 11px; }
+.pkg-table { font-size: 13px; }
 .pkg-table th, .pkg-table td { padding: 6px 8px; }
 
 /* ═══════════════════ */
@@ -496,9 +498,9 @@ table tr:hover td { background: #f9fafb; }
   display: flex;
   flex-direction: column;
 }
-.method-card .ml { font-size: 16px; font-weight: 800; letter-spacing: 1px; }
-.method-card .mn { font-size: 21px; font-weight: 900; color: #111; margin: 6px 0; }
-.method-card .md { font-size: 16px; color: #555; line-height: 1.6; flex:1; }
+.method-card .ml { font-size: 18px; font-weight: 800; letter-spacing: 1px; }
+.method-card .mn { font-size: 23px; font-weight: 900; color: #111; margin: 6px 0; }
+.method-card .md { font-size: 18px; color: #555; line-height: 1.6; flex:1; }
 .mc-a { background: #eff6ff; border-color: var(--c-blue); }
 .mc-a .ml { color: var(--c-blue); }
 .mc-b { background: #ecfdf5; border-color: var(--c-green); }
@@ -525,7 +527,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   gap: 8px;
   font-weight: 900;
-  font-size: 19px;
+  font-size: 21px;
   margin-bottom: 6px;
 }
 .pkg-card .pic {
@@ -535,13 +537,13 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   flex-shrink: 0;
 }
-.pkg-card .pcc { font-size: 16px; color: #666; margin-bottom: 6px; line-height: 1.5; }
-.pkg-card .pt { font-size: 15px; color: #999; margin-bottom: 8px; }
-.pkg-card .pe { font-size: 15px; color: var(--c-purple); padding-top: 8px; border-top: 1px dashed #e5e7eb; line-height: 1.6; margin-top: auto; }
+.pkg-card .pcc { font-size: 18px; color: #666; margin-bottom: 6px; line-height: 1.5; }
+.pkg-card .pt { font-size: 17px; color: #999; margin-bottom: 8px; }
+.pkg-card .pe { font-size: 17px; color: var(--c-purple); padding-top: 8px; border-top: 1px dashed #e5e7eb; line-height: 1.6; margin-top: auto; }
 
 /* ═══════════════════ */
 /*  STEPS              */
@@ -564,12 +566,12 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 20px;
   flex-shrink: 0;
 }
 .step .sb { flex: 1; }
-.step .sb h5 { font-size: 18px; font-weight: 700; }
-.step .sb .sm { font-size: 16px; color: #888; margin-top: 3px; }
+.step .sb h5 { font-size: 20px; font-weight: 700; }
+.step .sb .sm { font-size: 18px; color: #888; margin-top: 3px; }
 
 /* ═══════════════════ */
 /*  FLOW               */
@@ -585,15 +587,15 @@ table tr:hover td { background: #f9fafb; }
   padding: 18px 14px;
   text-align: center;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
   border: 2px solid;
 }
-.flow-box small { display: block; font-weight: 400; font-size: 15px; color: #666; margin-top: 6px; line-height: 1.5; }
+.flow-box small { display: block; font-weight: 400; font-size: 17px; color: #666; margin-top: 6px; line-height: 1.5; }
 .flow-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 25px;
+  font-size: 27px;
   color: var(--primary);
   font-weight: 900;
 }
@@ -605,12 +607,12 @@ table tr:hover td { background: #f9fafb; }
   background: #fff7ed;
   border-left: 4px solid var(--c-orange);
   border-radius: 10px;
-  padding: 14px 18px;
-  font-size: 17px;
+  padding: 16px 20px;
+  font-size: 21px;
 }
-.alert h5 { font-size: 17px; font-weight: 800; color: var(--c-orange); margin-bottom: 8px; }
-.alert ul { padding-left: 18px; }
-.alert li { margin-bottom: 5px; line-height: 1.6; }
+.alert h5 { font-size: 22px; font-weight: 800; color: var(--c-orange); margin-bottom: 10px; }
+.alert ul { padding-left: 20px; }
+.alert li { margin-bottom: 8px; line-height: 1.55; font-size: 20px; }
 
 /* ═══════════════════ */
 /*  GALLERY            */
@@ -650,8 +652,8 @@ table tr:hover td { background: #f9fafb; }
   border-top: 1px solid var(--border);
 }
 .gal-cap-l { flex: 1; }
-.gal-cap-l h5 { font-size: 20px; font-weight: 800; }
-.gal-cap-l p { font-size: 17px; color: #666; margin-top: 2px; }
+.gal-cap-l h5 { font-size: 22px; font-weight: 800; }
+.gal-cap-l p { font-size: 19px; color: #666; margin-top: 2px; }
 .gal-cap-r { display: flex; align-items: center; gap: 10px; }
 .gal-btn {
   width: 44px; height: 44px;
@@ -659,14 +661,14 @@ table tr:hover td { background: #f9fafb; }
   border: 2px solid var(--primary);
   background: #fff;
   color: var(--primary);
-  font-size: 21px;
+  font-size: 23px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .gal-btn:hover { background: var(--primary); color: #fff; }
-.gal-cnt { font-size: 17px; font-weight: 700; min-width: 60px; text-align: center; }
+.gal-cnt { font-size: 19px; font-weight: 700; min-width: 60px; text-align: center; }
 
 /* ═══════════════════ */
 /*  2-4 A안 진행률      */
@@ -674,25 +676,25 @@ table tr:hover td { background: #f9fafb; }
 .progress-summary {
   display: flex;
   align-items: stretch;
-  gap: 18px;
+  gap: 14px;
   background: #f8f9ff;
   border: 2px solid var(--c-blue);
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 10px 14px;
 }
 .progress-circle {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 110px;
+  min-width: 90px;
   background: linear-gradient(135deg, #4a78a6, #3a4f6b);
   color: #fff;
   border-radius: 12px;
-  padding: 10px 16px;
+  padding: 8px 12px;
 }
 .progress-percent {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1;
 }
@@ -701,7 +703,7 @@ table tr:hover td { background: #f9fafb; }
   margin-left: 2px;
 }
 .progress-label {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 4px;
   opacity: 0.9;
   font-weight: 600;
@@ -731,7 +733,7 @@ table tr:hover td { background: #f9fafb; }
   display: flex;
   gap: 16px;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   flex-wrap: wrap;
 }
@@ -739,29 +741,36 @@ table tr:hover td { background: #f9fafb; }
 .ps-total {
   margin-left: auto;
   color: var(--primary);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 /* 작업 표 */
 .task-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 14px;
 }
 .task-table th {
   background: var(--primary);
   color: #fff;
-  padding: 8px 12px;
+  padding: 5px 8px;
   text-align: left;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 700;
 }
 .task-table td {
-  padding: 8px 12px;
+  padding: 4px 8px;
   border-bottom: 1px solid var(--border);
   vertical-align: middle;
-  line-height: 1.4;
+  line-height: 1.3;
 }
+.task-table th, .task-table td {
+  white-space: nowrap;
+}
+.task-table th:nth-child(5), .task-table td:nth-child(5) {
+  font-size: 12px;
+}
+.task-table td:first-child, .task-table th:first-child { text-align: center; }
 .task-table tr:hover td { background: #f9fafc; }
 .task-tag {
   display: inline-block;
@@ -799,15 +808,15 @@ table tr:hover td { background: #f9fafb; }
 .cd-d h4 { color: #581c87; }
 
 .cd-card h4 {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 900;
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.cd-card .cd-sub { font-size: 13px; color: #666; }
+.cd-card .cd-sub { font-size: 15px; color: #666; }
 .cd-section-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   color: #1a1a2e;
   margin-top: 4px;
@@ -839,19 +848,19 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 13px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 .cd-step-body { flex: 1; min-width: 0; }
 .cd-step-body h5 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 1px;
   line-height: 1.3;
 }
 .cd-step-body p {
-  font-size: 11px;
+  font-size: 13px;
   color: #555;
   line-height: 1.4;
 }
@@ -885,7 +894,7 @@ table tr:hover td { background: #f9fafb; }
   color: #fff;
   padding: 4px 8px;
   text-align: left;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 .cd-info-table td {
@@ -911,7 +920,7 @@ table tr:hover td { background: #f9fafb; }
   gap: 4px;
 }
 .cd-issue-box h6 {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.3px;
 }
@@ -943,7 +952,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
 }
 .needs-strip .ns-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--primary);
   white-space: nowrap;
@@ -965,7 +974,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 17px;
   flex-shrink: 0;
 }
 .ns-text {
@@ -974,12 +983,12 @@ table tr:hover td { background: #f9fafb; }
   line-height: 1.3;
 }
 .ns-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #1a1a2e;
 }
 .ns-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
   margin-top: 2px;
 }
@@ -992,37 +1001,49 @@ table tr:hover td { background: #f9fafb; }
 .ns-item.n4 { border-left: 3px solid #a85454; }
 .ns-item.n4 .ns-n { background: #a85454; }
 
+/* 3단 흐름 화살표 */
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: 0.55;
+  padding-top: 34px;
+}
+
 .sec-heading {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 12px;
 }
 
-.pkg-main-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pkg-main-table { width: 100%; height: 100%; border-collapse: collapse; font-size: 16px; flex: 1; }
 .pkg-main-table th {
   background: #3a4f6b;
   color: #fff;
   padding: 8px 10px;
   text-align: left;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
 }
 .pkg-main-table td {
-  padding: 8px 10px;
+  padding: 10px 10px;
   border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
 .pkg-main-table tr:hover td { background: #f9fafc; }
 .pkg-main-table td.pnum {
   font-weight: 900;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   width: 30px;
 }
 .pkg-main-table .mvp-dot { color: #4a78a6; }
 .pkg-main-table .after-dot { color: #a05a3d; }
-.pkg-main-table .pname { font-weight: 800; font-size: 15px; color: #1a1a2e; }
+.pkg-main-table .pname { font-weight: 800; font-size: 17px; color: #1a1a2e; white-space: nowrap; }
 
 /* ═══════════════════ */
 /*  세부 표 (details)   */
@@ -1035,7 +1056,7 @@ table tr:hover td { background: #f9fafb; }
   margin-top: 4px;
 }
 .detail-box summary {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--primary);
   cursor: pointer;
@@ -1048,7 +1069,7 @@ table tr:hover td { background: #f9fafb; }
 .detail-box summary::-webkit-details-marker { display: none; }
 .detail-box summary::before {
   content: '▼';
-  font-size: 10px;
+  font-size: 12px;
   color: #6b7280;
   transition: transform 0.2s;
 }
@@ -1056,7 +1077,7 @@ table tr:hover td { background: #f9fafb; }
 .detail-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 8px;
 }
 .detail-table th {
@@ -1064,7 +1085,7 @@ table tr:hover td { background: #f9fafb; }
   color: #fff;
   padding: 6px 10px;
   text-align: left;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 .detail-table td {
@@ -1091,7 +1112,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   gap: 8px;
   font-weight: 900;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 .pkg-mvp { border-color: var(--c-green) !important; background: #f4faf5; }
@@ -1103,7 +1124,7 @@ table tr:hover td { background: #f9fafb; }
 .pkg7-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 17px;
+  font-size: 19px;
   border: 2px solid #c44b3a;
   border-radius: 8px;
   overflow: hidden;
@@ -1114,7 +1135,7 @@ table tr:hover td { background: #f9fafb; }
   padding: 14px 16px;
   text-align: left;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px;
   border-bottom: 2px solid #c44b3a;
   border-right: 1px solid #e5e7eb;
 }
@@ -1128,8 +1149,8 @@ table tr:hover td { background: #f9fafb; }
 .pkg7-table td:last-child { border-right: none; }
 .pkg7-table tr:last-child td { border-bottom: none; }
 .pkg7-table tr:hover td { background: #f9fafc; }
-.p7-num { font-size: 22px; font-weight: 900; color: #4a78a6; text-align: center; }
-.p7-name { font-size: 17px; font-weight: 800; color: #1a1a2e; }
+.p7-num { font-size: 24px; font-weight: 900; color: #4a78a6; text-align: center; }
+.p7-name { font-size: 19px; font-weight: 800; color: #1a1a2e; }
 
 /* ═══════════════════ */
 /*  3-1 큐레이션 표    */
@@ -1141,7 +1162,7 @@ table tr:hover td { background: #f9fafb; }
   gap: 8px;
 }
 .curation-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 4px;
@@ -1149,7 +1170,7 @@ table tr:hover td { background: #f9fafb; }
 .curation-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 14px;
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -1160,7 +1181,7 @@ table tr:hover td { background: #f9fafb; }
   color: #fff;
   padding: 7px 10px;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 .curation-table td {
@@ -1173,11 +1194,11 @@ table tr:hover td { background: #f9fafb; }
 .cur-row {
   font-weight: 800;
   color: #1a1a2e;
-  font-size: 13px;
+  font-size: 15px;
 }
 .cur-tag {
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
   background: #eef2f7;
   color: #4a78a6;
   padding: 1px 6px;
@@ -1186,7 +1207,7 @@ table tr:hover td { background: #f9fafb; }
 }
 .cur-warn {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: #a05a3d;
   margin-top: 3px;
   background: #fff7ed;
@@ -1196,7 +1217,7 @@ table tr:hover td { background: #f9fafb; }
 }
 .cur-ok {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: #2e7d32;
   margin-top: 3px;
   background: #f1f8f4;
@@ -1253,7 +1274,7 @@ table tr:hover td { background: #f9fafb; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 15px;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -1277,7 +1298,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 20px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.4);
   z-index: 3;
   border: 2px solid #fff;
@@ -1305,7 +1326,7 @@ table tr:hover td { background: #f9fafb; }
   border: 1.5px solid;
 }
 .set-card-num {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -1315,14 +1336,14 @@ table tr:hover td { background: #f9fafb; }
 }
 .set-card-body { flex: 1; min-width: 0; }
 .set-card-body h5 {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 3px;
   line-height: 1.3;
 }
 .set-card-body p {
-  font-size: 13px;
+  font-size: 15px;
   color: #555;
   line-height: 1.5;
 }
@@ -1354,9 +1375,9 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   gap: 10px;
 }
-.set-card-mini .set-card-num { font-size: 20px; }
-.set-card-mini h5 { font-size: 13px; font-weight: 800; }
-.set-card-mini p { font-size: 11px; color: #666; }
+.set-card-mini .set-card-num { font-size: 22px; }
+.set-card-mini h5 { font-size: 15px; font-weight: 800; }
+.set-card-mini p { font-size: 13px; color: #666; }
 
 .set-card-detail {
   padding: 8px 12px;
@@ -1373,8 +1394,8 @@ table tr:hover td { background: #f9fafb; }
   justify-content: flex-start;
   gap: 8px;
 }
-.set-card-detail .set-card-head .set-card-num { font-size: 18px; }
-.set-card-detail .set-card-head h5 { font-size: 13px; font-weight: 800; }
+.set-card-detail .set-card-head .set-card-num { font-size: 20px; }
+.set-card-detail .set-card-head h5 { font-size: 15px; font-weight: 800; }
 
 /* ② 카테고리 칩 */
 .cat-chips {
@@ -1388,7 +1409,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   padding: 3px 8px;
   border-radius: 12px;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   background: #fff;
   border: 1px solid #d4d4d8;
@@ -1426,7 +1447,7 @@ table tr:hover td { background: #f9fafb; }
 .mini-table tr:last-child td { border-bottom: none; }
 .cur-warn-inline {
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
   color: #a05a3d;
   background: #fff7ed;
   padding: 0 4px;
@@ -1435,7 +1456,7 @@ table tr:hover td { background: #f9fafb; }
 }
 .cur-ok-inline {
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
   color: #2e7d32;
   background: #f1f8f4;
   padding: 0 4px;
@@ -1464,18 +1485,18 @@ table tr:hover td { background: #f9fafb; }
   border: 1.5px solid;
 }
 .set-mini-num {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   flex-shrink: 0;
 }
 .set-mini h5 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   color: #1a1a2e;
   line-height: 1.3;
 }
 .set-mini p {
-  font-size: 11px;
+  font-size: 13px;
   color: #6b7280;
   margin-top: 2px;
   line-height: 1.3;
@@ -1497,7 +1518,7 @@ table tr:hover td { background: #f9fafb; }
   overflow: hidden;
 }
 .depth-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--primary);
 }
@@ -1505,14 +1526,14 @@ table tr:hover td { background: #f9fafb; }
 .depth-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
 }
 .depth-table th {
   background: var(--primary);
   color: #fff;
   padding: 8px 10px;
   text-align: left;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
 }
 .depth-table td {
@@ -1533,7 +1554,7 @@ table tr:hover td { background: #f9fafb; }
   font-weight: 800;
   padding: 3px 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
 }
 .depth-badge.d-none { background: #e5e7eb; color: #6b7280; }
@@ -1546,7 +1567,7 @@ table tr:hover td { background: #f9fafb; }
 /*  2-7 호출 플로우    */
 /* ═══════════════════ */
 .cf-section-title {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 10px;
@@ -1577,7 +1598,7 @@ table tr:hover td { background: #f9fafb; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
   color: #6b7280;
   font-weight: 900;
   padding: 0 6px;
@@ -1590,7 +1611,7 @@ table tr:hover td { background: #f9fafb; }
   overflow: hidden;
 }
 .cf-area-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: #6b7280;
   letter-spacing: 1px;
@@ -1617,7 +1638,7 @@ table tr:hover td { background: #f9fafb; }
   background: #4a78a6;
   color: #fff;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 18px;
   padding: 4px 20px;
   border-radius: 5px;
   letter-spacing: 1.5px;
@@ -1639,7 +1660,7 @@ table tr:hover td { background: #f9fafb; }
   background: #fff;
 }
 .cf-info-mini {
-  font-size: 13px;
+  font-size: 15px;
   color: #6b7280;
   line-height: 1.5;
   margin-top: 6px;
@@ -1656,7 +1677,7 @@ table tr:hover td { background: #f9fafb; }
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 16px;
+  font-size: 18px;
   position: absolute;
   top: -14px;
   left: 50%;
@@ -1668,7 +1689,7 @@ table tr:hover td { background: #f9fafb; }
 .n-green { background: #4a7862; }
 
 .cf-name {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   color: #1a1a2e;
   line-height: 1.35;
@@ -1680,7 +1701,7 @@ table tr:hover td { background: #f9fafb; }
   width: 100%;
 }
 .cf-plus {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
   color: #a85454;
   flex-shrink: 0;
@@ -1700,7 +1721,7 @@ table tr:hover td { background: #f9fafb; }
   padding: 6px 16px;
   border-radius: 8px 8px 0 0;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px;
   display: inline-block;
   align-self: flex-start;
 }
@@ -1722,7 +1743,7 @@ table tr:hover td { background: #f9fafb; }
 .cf-item {
   border-radius: 6px;
   padding: 10px 14px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   border-left: 4px solid;
   background: #f9fafb;
@@ -1730,7 +1751,7 @@ table tr:hover td { background: #f9fafb; }
 .cf-item strong { font-weight: 800; }
 .cf-item span {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
   font-weight: 500;
   margin-top: 3px;
@@ -1761,7 +1782,7 @@ table tr:hover td { background: #f9fafb; }
   border-radius: 6px;
 }
 .cf-game-label {
-  font-size: 14px;
+  font-size: 16px;
   color: #4a7862;
   margin-top: 8px;
   font-weight: 700;
@@ -1776,28 +1797,28 @@ table tr:hover td { background: #f9fafb; }
 .phase-box {
   flex: 1;
   border-radius: 10px;
-  padding: 14px 18px;
+  padding: 10px 14px;
   border: 2px solid;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 .phase-box.ph-1 { flex: 2; background: #f3f6fa; border-color: #4a78a6; }
 .phase-box.ph-2 { background: #faf5f0; border-color: #a05a3d; }
 .phase-box.ph-f { background: #f6f3fa; border-color: #6b4a8a; }
 .ph-head {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #6b7280;
 }
 .ph-head .ph-when {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: #9ca3af;
   margin-left: 4px;
 }
 .ph-sub {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: -0.3px;
   margin-top: 2px;
@@ -1806,7 +1827,7 @@ table tr:hover td { background: #f9fafb; }
 .phase-box.ph-2 .ph-sub { color: #8a4a2d; }
 .phase-box.ph-f .ph-sub { color: #5a3a7a; }
 .ph-body {
-  font-size: 13px;
+  font-size: 15px;
   color: #555;
   line-height: 1.6;
   margin-top: 6px;
@@ -1816,13 +1837,15 @@ table tr:hover td { background: #f9fafb; }
 .phase-arrow {
   display: flex;
   align-items: center;
-  font-size: 24px;
+  font-size: 26px;
   color: #9ca3af;
   font-weight: 900;
 }
 
 /* 방법론 비교표 */
-.method-cmp-table { table-layout: fixed; width: 100%; }
+.method-cmp-table { table-layout: fixed; width: 100%; border-collapse: collapse; }
+.method-cmp-table th { padding: 6px 8px; font-size: 13px; color: #fff; text-align: left; }
+.method-cmp-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.35; }
 
 /* 방법론 가로 */
 .method-row-h {
@@ -1853,7 +1876,7 @@ table tr:hover td { background: #f9fafb; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: 1px;
   padding: 8px 14px;
@@ -1864,14 +1887,14 @@ table tr:hover td { background: #f9fafb; }
 .mrh-name {
   grid-column: 2;
   grid-row: 1;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 900;
   color: #1a1a2e;
 }
 .mrh-desc {
   grid-column: 2;
   grid-row: 2;
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
   line-height: 1.5;
 }
@@ -1916,7 +1939,7 @@ table tr:hover td { background: #f9fafb; }
 
 .scope-head {
   padding: 14px 20px;
-  font-size: 23px;
+  font-size: 25px;
   font-weight: 900;
   color: #fff;
   display: flex;
@@ -1925,7 +1948,7 @@ table tr:hover td { background: #f9fafb; }
 }
 .mvp-head { background: #3a4f6b; }
 .after-head { background: #8a5a3d; }
-.scope-badge { font-size: 18px; }
+.scope-badge { font-size: 20px; }
 
 .scope-row {
   display: grid;
@@ -1939,7 +1962,7 @@ table tr:hover td { background: #f9fafb; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   text-align: center;
   padding: 4px 6px;
@@ -1970,7 +1993,7 @@ table tr:hover td { background: #f9fafb; }
   justify-content: center;
   padding: 5px 0;
   border-radius: 16px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   width: 80px;
   text-align: center;
@@ -1984,7 +2007,7 @@ table tr:hover td { background: #f9fafb; }
   margin: 0;
 }
 .scope-list li {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
   padding: 1px 0 1px 16px;
   position: relative;
@@ -1997,13 +2020,13 @@ table tr:hover td { background: #f9fafb; }
   left: 2px;
   font-weight: 900;
   color: #6b7280;
-  font-size: 19px;
+  font-size: 21px;
 }
 .scope-list li u { text-decoration: underline; text-underline-offset: 2px; }
 
 .scope-footnote {
   margin-top: 12px;
-  font-size: 16px;
+  font-size: 18px;
   color: #8a5a3d;
   text-align: right;
   font-weight: 600;
@@ -2017,7 +2040,7 @@ table tr:hover td { background: #f9fafb; }
   .row2, .row3, .row4, .needs, .method-grid, .pkg-grid, .toc-grid { grid-template-columns: 1fr; }
   .gantt-head, .gantt-row { grid-template-columns: 80px repeat(2, 1fr); }
   .slide { padding: 20px; }
-  .s-title { font-size: 18px; }
+  .s-title { font-size: 20px; }
 }
 </style>
 </head>
@@ -2306,147 +2329,151 @@ table tr:hover td { background: #f9fafb; }
     </div>
     <div class="s-sub">교사 핵심 니즈 → 상품 패키지 7종 → 수급 방법론 4가지</div>
   </div>
-  <div class="s-body" style="display:flex; flex-direction:column; gap:18px;">
+  <div class="s-body" style="display:grid; grid-template-columns: 1.2fr 36px 2.8fr 36px 1.6fr; gap:10px; align-items:stretch;">
 
-    <!-- 1. 교사 핵심 니즈 (컴팩트 띠) -->
-    <div class="needs-strip">
-      <div class="ns-label">📊 교사 핵심 니즈 TOP 4</div>
-      <div class="ns-item n1">
-        <span class="ns-n">1</span>
-        <div class="ns-text">
-          <div class="ns-name">교과과정 연계</div>
-          <div class="ns-desc">복습 · 형성평가 · 단원 마무리</div>
+    <!-- 1단: 교사 핵심 니즈 (세로) -->
+    <div style="display:flex; flex-direction:column; min-height:0;">
+      <div class="sec-heading">📊 교사 핵심 니즈 TOP 4</div>
+      <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+        <div class="ns-item n1" style="flex:1;">
+          <span class="ns-n">1</span>
+          <div class="ns-text">
+            <div class="ns-name">교과과정 연계</div>
+            <div class="ns-desc">복습 · 형성평가 · 단원 마무리</div>
+          </div>
         </div>
-      </div>
-      <div class="ns-item n2">
-        <span class="ns-n">2</span>
-        <div class="ns-text">
-          <div class="ns-name">아이스브레이킹</div>
-          <div class="ns-desc">개학 첫날 · 학기 초 분위기 형성</div>
+        <div class="ns-item n2" style="flex:1;">
+          <span class="ns-n">2</span>
+          <div class="ns-text">
+            <div class="ns-name">아이스브레이킹</div>
+            <div class="ns-desc">개학 첫날 · 학기 초 분위기 형성</div>
+          </div>
         </div>
-      </div>
-      <div class="ns-item n3">
-        <span class="ns-n">3</span>
-        <div class="ns-text">
-          <div class="ns-name">시사 · 일반 상식</div>
-          <div class="ns-desc">매주 반복 사용 · 주의 환기</div>
+        <div class="ns-item n3" style="flex:1;">
+          <span class="ns-n">3</span>
+          <div class="ns-text">
+            <div class="ns-name">시사 · 일반 상식</div>
+            <div class="ns-desc">매주 반복 사용 · 주의 환기</div>
+          </div>
         </div>
-      </div>
-      <div class="ns-item n4">
-        <span class="ns-n">4</span>
-        <div class="ns-text">
-          <div class="ns-name">시험 대비</div>
-          <div class="ns-desc">중간 · 기말 시즌 단기 급증</div>
+        <div class="ns-item n4" style="flex:1;">
+          <span class="ns-n">4</span>
+          <div class="ns-text">
+            <div class="ns-name">시험 대비</div>
+            <div class="ns-desc">중간 · 기말 시즌 단기 급증</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 2단: 좌측 패키지 (3) + 우측 방법론 (2) -->
-    <div style="display:grid; grid-template-columns: 3fr 2fr; gap: 18px; flex: 1; min-height: 0;">
+    <!-- 흐름 화살표 1 -->
+    <div class="flow-arrow">→</div>
 
-      <!-- 좌: 상품 패키지 -->
-      <div style="display:flex; flex-direction:column; min-height:0;">
-        <div class="sec-heading">🎁 상품 패키지 7종</div>
-        <table class="pkg-main-table">
-          <tr>
-            <th style="width:30px;">#</th>
-            <th style="width:130px;">패키지명</th>
-            <th>한줄 컨셉</th>
-            <th>타겟 대상</th>
-            <th style="width:50px;">방법</th>
-            <th style="width:80px;">단계</th>
-          </tr>
-          <tr>
-            <td class="pnum mvp-dot">1</td>
-            <td class="pname">교과서 프리패스</td>
-            <td>어떤 교과서든 바로 시작</td>
-            <td>초 · 중 · 고 전체 교사</td>
-            <td><span class="badge b-a">A</span></td>
-            <td><span class="badge b-mvp">MVP</span></td>
-          </tr>
-          <tr>
-            <td class="pnum mvp-dot">2</td>
-            <td class="pname">초등 올패키지</td>
-            <td>학년 하나면 전과목 끝</td>
-            <td>초등 담임 교사</td>
-            <td><span class="badge b-b">B</span></td>
-            <td><span class="badge b-mvp">MVP</span></td>
-          </tr>
-          <tr>
-            <td class="pnum mvp-dot">3</td>
-            <td class="pname">분위기 메이커</td>
-            <td>틀면 끝, 반응은 폭발</td>
-            <td>전체 교사 (아이스브레이킹)</td>
-            <td><span class="badge b-b">B</span></td>
-            <td><span class="badge b-mvp">MVP</span></td>
-          </tr>
-          <tr>
-            <td class="pnum after-dot">4</td>
-            <td class="pname">과목 직격탄</td>
-            <td>수학은 수학만, 딱 맞게</td>
-            <td>중 · 고 교과 담당</td>
-            <td><span class="badge b-a">A</span></td>
-            <td><span class="badge b-after">MVP 이후</span></td>
-          </tr>
-          <tr>
-            <td class="pnum after-dot">5</td>
-            <td class="pname">시즌 이벤트</td>
-            <td>3월 신학기부터 졸업까지</td>
-            <td>전체 교사</td>
-            <td><span class="badge b-a">A</span></td>
-            <td><span class="badge b-after">MVP 이후</span></td>
-          </tr>
-          <tr>
-            <td class="pnum after-dot">6</td>
-            <td class="pname">시험 저격수</td>
-            <td>시험 전날도 이걸로</td>
-            <td>중 · 고 교과 담당</td>
-            <td><span class="badge b-a">A</span></td>
-            <td><span class="badge b-after">MVP 이후</span></td>
-          </tr>
-          <tr>
-            <td class="pnum after-dot">7</td>
-            <td class="pname">내 교재 그대로</td>
-            <td>오투도 완자도 게임으로</td>
-            <td>학원 · 개인 학습자</td>
-            <td><span class="badge b-c">C</span></td>
-            <td><span class="badge b-after">MVP 이후</span></td>
-          </tr>
-        </table>
-      </div>
+    <!-- 2단: 상품 패키지 -->
+    <div style="display:flex; flex-direction:column; min-height:0;">
+      <div class="sec-heading">🎁 상품 패키지 7종</div>
+      <table class="pkg-main-table">
+        <tr>
+          <th style="width:26px;">#</th>
+          <th style="width:130px; white-space:nowrap;">패키지명</th>
+          <th>한줄 컨셉</th>
+          <th>타겟 대상</th>
+          <th style="width:44px;">방법</th>
+          <th style="width:72px;">단계</th>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">1</td>
+          <td class="pname">교과서 프리패스</td>
+          <td>우리 반 교과서가 뭐든 OK —<br>검인정 10개 출판사 전 단원 세트 완비</td>
+          <td>초 · 중 · 고 전체 교사</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">2</td>
+          <td class="pname">초등 올패키지</td>
+          <td>초3 담임이면 초3 국·영·수·사·과 1년치 —<br>학년만 고르면 담임 올인원</td>
+          <td>초등 담임 교사</td>
+          <td><span class="badge b-b">B</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum mvp-dot">3</td>
+          <td class="pname">분위기 메이커</td>
+          <td>산만한 교실도 5분 만에 몰입 모드 —<br>아이스브레이킹·집중력 장전 세트</td>
+          <td>전체 교사 (아이스브레이킹)</td>
+          <td><span class="badge b-b">B</span></td>
+          <td><span class="badge b-mvp">MVP</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">4</td>
+          <td class="pname">과목 직격탄</td>
+          <td>중·고 한 과목 전문 교사 전용 —<br>단원별·유형별 심화 세트지</td>
+          <td>중 · 고 교과 담당</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">5</td>
+          <td class="pname">시즌 이벤트</td>
+          <td>개학·한글날·과학의 날·수능·졸업 —<br>계기수업에 딱 맞춘 테마 세트</td>
+          <td>전체 교사</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">6</td>
+          <td class="pname">시험 저격수</td>
+          <td>출판사·학년·단원별 기출 패턴 세트지 —<br>중간·기말 2주 전 바로 투입</td>
+          <td>중 · 고 교과 담당</td>
+          <td><span class="badge b-a">A</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+        <tr>
+          <td class="pnum after-dot">7</td>
+          <td class="pname">내 교재 그대로</td>
+          <td>오투·완자·수매쓰 PDF 업로드 →<br>우리 학원 교재 그대로 게임 세트로</td>
+          <td>학원 · 개인 학습자</td>
+          <td><span class="badge b-c">C</span></td>
+          <td><span class="badge b-after">MVP 이후</span></td>
+        </tr>
+      </table>
+    </div>
 
-      <!-- 우: 방법론 (세로 스택) -->
-      <div style="display:flex; flex-direction:column; min-height:0;">
-        <div class="sec-heading">⚙️ 문항 수급 방법론 4가지</div>
-        <div class="method-stack">
-          <div class="mrh mrh-a">
-            <div class="mrh-tag">A안</div>
-            <div class="mrh-name">CBS 컨버트</div>
-            <div class="mrh-desc">AIDT/비바샘 기존 문항 → 게임 문항 변환</div>
-            <span class="badge b-mvp">MVP</span>
-          </div>
-          <div class="mrh mrh-b">
-            <div class="mrh-tag">B안</div>
-            <div class="mrh-name">공부력 IP</div>
-            <div class="mrh-desc">공부력 문항 풀 → 학년별/테마별 세트지</div>
-            <span class="badge b-mvp">MVP</span>
-          </div>
-          <div class="mrh mrh-c">
-            <div class="mrh-tag">C안</div>
-            <div class="mrh-name">PDF OCR</div>
-            <div class="mrh-desc">교재 PDF → OCR → CBS → 게임화</div>
-            <span class="badge b-after">MVP 이후</span>
-          </div>
-          <div class="mrh mrh-d">
-            <div class="mrh-tag">D안</div>
-            <div class="mrh-name">AI 자동 생성</div>
-            <div class="mrh-desc">GPT · 보인 · 레스퍼 → 자동 문항 생성</div>
-            <span class="badge b-future">추후</span>
-          </div>
+    <!-- 흐름 화살표 2 -->
+    <div class="flow-arrow">→</div>
+
+    <!-- 3단: 방법론 (세로 스택) -->
+    <div style="display:flex; flex-direction:column; min-height:0;">
+      <div class="sec-heading">⚙️ 문항 수급 방법론 4가지</div>
+      <div class="method-stack">
+        <div class="mrh mrh-a">
+          <div class="mrh-tag">A안</div>
+          <div class="mrh-name">CBS 컨버트</div>
+          <div class="mrh-desc">AIDT/비바샘 기존 문항 → 게임 문항 변환</div>
+          <span class="badge b-mvp">MVP</span>
+        </div>
+        <div class="mrh mrh-b">
+          <div class="mrh-tag">B안</div>
+          <div class="mrh-name">공부력 IP</div>
+          <div class="mrh-desc">공부력 문항 풀 → 학년별/테마별 세트지</div>
+          <span class="badge b-mvp">MVP</span>
+        </div>
+        <div class="mrh mrh-c">
+          <div class="mrh-tag">C안</div>
+          <div class="mrh-name">PDF OCR</div>
+          <div class="mrh-desc">교재 PDF → OCR → CBS → 게임화</div>
+          <span class="badge b-after">MVP 이후</span>
+        </div>
+        <div class="mrh mrh-d">
+          <div class="mrh-tag">D안</div>
+          <div class="mrh-name">AI 자동 생성</div>
+          <div class="mrh-desc">GPT · 보인 · 레스퍼 → 자동 문항 생성</div>
+          <span class="badge b-future">추후</span>
         </div>
       </div>
-
     </div>
+
   </div>
 </div>
 
@@ -2457,7 +2484,7 @@ table tr:hover td { background: #f9fafb; }
       <div class="s-tag t2">2-2</div>
       <div class="s-title">패키지</div>
     </div>
-    <div class="s-sub">패키지 7종 카드 + 세부 표 (이름 / 컨셉 / 타겟 / 시점)</div>
+    <div class="s-sub">패키지 7종 카드 (이름 / 컨셉 / 타겟 / 시점)</div>
   </div>
   <div class="s-body" style="display:flex; flex-direction:column; gap:12px;">
 
@@ -2465,13 +2492,13 @@ table tr:hover td { background: #f9fafb; }
     <div style="display:flex; flex-direction:column; gap:10px;">
       <!-- MVP 그룹 -->
       <div style="background:#ecfdf5; border-radius:12px; padding:10px 14px; border:2px solid var(--c-green);">
-        <div style="font-size:14px; font-weight:800; color:var(--c-green); margin-bottom:8px;">▎MVP (~5월) — 교사 핵심 니즈 즉시 대응</div>
+        <div style="font-size:16px; font-weight:800; color:var(--c-green); margin-bottom:8px;">▎MVP (~5월) — 교사 핵심 니즈 즉시 대응</div>
         <div class="row3" style="gap:8px;">
           <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-blue);">1</span> 교과서 프리패스</div>
-            <div class="pcc">어떤 교과서든 바로 시작</div>
+            <div class="pcc">우리 반 교과서가 뭐든 OK —<br>검인정 10개 출판사 전 단원 세트 완비</div>
             <div class="pt"><strong>타겟:</strong> 초/중/고 전체 교사</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-blue);">A.</strong> AIDT/비바샘 → 컨버트<br>
               <strong style="color:var(--c-purple);">D.</strong> 지식요인별 자동 매핑
             </div>
@@ -2479,9 +2506,9 @@ table tr:hover td { background: #f9fafb; }
           </div>
           <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-green);">2</span> 초등 올패키지</div>
-            <div class="pcc">학년 하나면 전과목 끝</div>
+            <div class="pcc">초3 담임이면 초3 국·영·수·사·과 1년치 —<br>학년만 고르면 담임 올인원</div>
             <div class="pt"><strong>타겟:</strong> 초등 담임 교사</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-green);">B.</strong> 공부력 → 학년별 편성<br>
               <strong style="color:var(--c-purple);">D.</strong> 학년별 자동 큐레이팅
             </div>
@@ -2489,9 +2516,9 @@ table tr:hover td { background: #f9fafb; }
           </div>
           <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-orange);">4</span> 분위기 메이커</div>
-            <div class="pcc">틀면 끝, 반응은 폭발</div>
+            <div class="pcc">산만한 교실도 5분 만에 몰입 모드 —<br>아이스브레이킹·집중력 장전 세트</div>
             <div class="pt"><strong>타겟:</strong> 전체 교사 (아이스브레이킹)</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-green);">B.</strong> 넌센스/오늘의 상식<br>
               <strong style="color:var(--c-purple);">D.</strong> OpenAI+Wiki 시사 자동
             </div>
@@ -2502,13 +2529,13 @@ table tr:hover td { background: #f9fafb; }
 
       <!-- MVP 이후 그룹 -->
       <div style="background:#fff7ed; border-radius:12px; padding:10px 14px; border:2px solid var(--c-orange);">
-        <div style="font-size:14px; font-weight:800; color:var(--c-orange); margin-bottom:8px;">▎MVP 이후 (~8월) — 대상/활용 범위 확장</div>
+        <div style="font-size:16px; font-weight:800; color:var(--c-orange); margin-bottom:8px;">▎MVP 이후 (~8월) — 대상/활용 범위 확장</div>
         <div class="row4" style="gap:8px;">
           <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-red);">3</span> 과목 직격탄</div>
-            <div class="pcc">수학은 수학만, 딱 맞게</div>
+            <div class="pcc">중·고 한 과목 전문 교사 전용 —<br>단원별·유형별 심화 세트지</div>
             <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-blue);">A.</strong> 비바샘 → 지식요인별<br>
               <strong style="color:var(--c-purple);">D.</strong> 보인/레스퍼 유사 문항
             </div>
@@ -2516,9 +2543,9 @@ table tr:hover td { background: #f9fafb; }
           </div>
           <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-purple);">5</span> 시즌 이벤트</div>
-            <div class="pcc">3월 신학기 ~ 12월 졸업</div>
+            <div class="pcc">개학·한글날·과학의 날·수능·졸업 —<br>계기수업에 딱 맞춘 테마 세트</div>
             <div class="pt"><strong>타겟:</strong> 전체 교사</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-blue);">A.</strong> 월별 행사 테마 세트지<br>
               <strong style="color:var(--c-purple);">D.</strong> 교사 저작 → 광장 UGC
             </div>
@@ -2526,9 +2553,9 @@ table tr:hover td { background: #f9fafb; }
           </div>
           <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:#64748b;">6</span> 시험 저격수</div>
-            <div class="pcc">시험 전날도 이걸로</div>
+            <div class="pcc">출판사·학년·단원별 기출 패턴 세트지 —<br>중간·기말 2주 전 바로 투입</div>
             <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-blue);">A.</strong> 단원/난이도 태그<br>
               <strong style="color:var(--c-purple);">D.</strong> 기출 패턴 출제 예상
             </div>
@@ -2536,9 +2563,9 @@ table tr:hover td { background: #f9fafb; }
           </div>
           <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
             <div class="pn"><span class="pic" style="background:var(--c-cyan);">7</span> 내 교재 그대로</div>
-            <div class="pcc">오투도 완자도 게임으로</div>
+            <div class="pcc">오투·완자·수매쓰 PDF 업로드 →<br>우리 학원 교재 그대로 게임 세트로</div>
             <div class="pt"><strong>타겟:</strong> 학원/개인 학습자</div>
-            <div style="font-size:13px; line-height:1.6;">
+            <div style="font-size:15px; line-height:1.6;">
               <strong style="color:var(--c-orange);">C.</strong> 교재 PDF → OCR<br>
               <strong style="color:var(--c-purple);">D.</strong> AI OCR 자동화 + 태깅
             </div>
@@ -2547,27 +2574,6 @@ table tr:hover td { background: #f9fafb; }
         </div>
       </div>
     </div>
-
-    <!-- 하단: 세부 표 (이미지 1 정보 요약) -->
-    <details class="detail-box" open>
-      <summary>📋 세부 표 — 패키지 7종 한눈에</summary>
-      <table class="detail-table">
-        <tr>
-          <th style="width:30px;">#</th>
-          <th style="width:140px;">패키지 이름</th>
-          <th>컨셉</th>
-          <th style="width:170px;">타겟</th>
-          <th style="width:80px;">시점</th>
-        </tr>
-        <tr><td>①</td><td><strong>교과서 프리패스</strong></td><td>어떤 교과서든 바로 시작</td><td>초·중·고 전체</td><td><span class="badge b-mvp">MVP</span></td></tr>
-        <tr><td>②</td><td><strong>초등 올패키지</strong></td><td>학년 하나면 전과목 끝</td><td>초등 담임</td><td><span class="badge b-mvp">MVP</span></td></tr>
-        <tr><td>③</td><td><strong>과목 직격탄</strong></td><td>수학은 수학만, 딱 맞게</td><td>중·고 교과 담당</td><td><span class="badge b-after">MVP 이후</span></td></tr>
-        <tr><td>④</td><td><strong>분위기 메이커</strong></td><td>틀면 끝, 반응은 폭발</td><td>전체 교사</td><td><span class="badge b-mvp">MVP</span></td></tr>
-        <tr><td>⑤</td><td><strong>시즌 이벤트</strong></td><td>3월 신학기부터 졸업까지</td><td>전체 교사</td><td><span class="badge b-after">MVP 이후</span></td></tr>
-        <tr><td>⑥</td><td><strong>시험 저격수</strong></td><td>시험 전날도 이걸로</td><td>중·고 교과 담당</td><td><span class="badge b-after">MVP 이후</span></td></tr>
-        <tr><td>⑦</td><td><strong>내 교재 그대로</strong></td><td>오투도 완자도 게임으로</td><td>학원·개인</td><td><span class="badge b-after">MVP 이후</span></td></tr>
-      </table>
-    </details>
 
   </div>
 </div>
@@ -2582,7 +2588,7 @@ table tr:hover td { background: #f9fafb; }
     <div class="s-sub">A / B / C / D 전체 비교 — MVP → 확장 → 최종 목표</div>
   </div>
   <div class="s-body" style="display:flex; flex-direction:column; gap:14px;">
-    <table class="method-cmp-table" style="font-size:16px;">
+    <table class="method-cmp-table" style="font-size:14px;">
       <tr>
         <th style="width:110px;">항목</th>
         <th style="background:var(--c-blue);">A. CBS 컨버트</th>
@@ -2684,7 +2690,7 @@ table tr:hover td { background: #f9fafb; }
   </div>
   <div class="s-body" style="display:flex; flex-direction:column; gap:14px;">
 
-    <!-- 상단: 진행률 요약 -->
+    <!-- 상단: 전체 진행률 -->
     <div class="progress-summary">
       <div class="progress-circle">
         <div class="progress-percent">30<span>%</span></div>
@@ -2706,98 +2712,120 @@ table tr:hover td { background: #f9fafb; }
       </div>
     </div>
 
-    <!-- 작업 표 -->
-    <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
-      <div style="font-size:15px; font-weight:800; color:var(--primary); margin-bottom:8px;">📋 작업 진행 현황</div>
-      <table class="task-table">
-        <tr>
-          <th style="width:30px;">#</th>
-          <th>작업</th>
-          <th style="width:170px;">담당</th>
-          <th style="width:100px;">일정</th>
-          <th style="width:80px;">상태</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>일반 문항 → 게임 문항 변환 문항 풀 확인</td>
-          <td>전략 Cell</td>
-          <td>3월 ~ 4월 1주</td>
-          <td><span class="badge b-done">완료</span></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>변환 기능 개발</td>
-          <td>개발 Cell</td>
-          <td>4월 1~2주</td>
-          <td><span class="badge b-done">완료</span></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>게임 템플릿 변환 (1차 검토)</td>
-          <td>CBS기획운영 Cell</td>
-          <td>4월 2주</td>
-          <td><span class="badge b-done">완료</span></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>AI 문항 검수 전 <strong>1차 필터링</strong> 가능 여부 확인</td>
-          <td>기술연구소 (w. CBS기획운영)</td>
-          <td>4월 2주</td>
-          <td><span class="badge b-ing">진행중</span></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>게임 템플릿 유형 기획 <span class="task-tag">5지선다 추가 요청</span></td>
-          <td>전략 Cell</td>
-          <td>4월 2주</td>
-          <td><span class="badge b-ing">진행중</span></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>게임 5지선다 템플릿 유형 개발</td>
-          <td>에듀게임전략 Cell</td>
-          <td>4월 3주</td>
-          <td><span class="badge b-wait">대기</span></td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>일반 문항 → 게임 문항 컨버팅</td>
-          <td>CBS기획운영 Cell</td>
-          <td>4월 3주</td>
-          <td><span class="badge b-ing">진행중</span></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>컨버팅 문항 검수</td>
-          <td>전략 Cell</td>
-          <td>4월 말</td>
-          <td><span class="badge b-wait">대기</span></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>교과과정 단위 묶기 → 세트지 편성</td>
-          <td>(미정)</td>
-          <td>5월</td>
-          <td><span class="badge b-wait">대기</span></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>게임 DB 적재 → 서비스 제공</td>
-          <td>개발 Cell</td>
-          <td>5월 말</td>
-          <td><span class="badge b-wait">대기</span></td>
-        </tr>
-      </table>
-    </div>
+    <!-- 하단: 좌(작업 진행 현황) / 우(문항 풀 + 이슈) -->
+    <div style="display:grid; grid-template-columns: 3fr 2fr; gap:18px; flex:1; min-height:0;">
 
-    <!-- 이슈 -->
-    <div class="alert" style="margin-top:0;">
-      <h5>⚠️ 핵심 이슈</h5>
-      <ul style="margin:0; columns:2; column-gap:24px;">
-        <li>AIDT 세트지 일반 문항 변형 방식 → <strong>컨버팅 시 중복 문항 발생 가능</strong></li>
-        <li>5지선다 비중 높음 → <strong>게임 템플릿 내 5지선다 유형 추가 필요</strong></li>
-        <li style="break-inside:avoid;">일반 문항 → 게임 문항 변환 시 <strong>검수/수정 등 후작업 불가피</strong></li>
-      </ul>
+      <!-- 좌: 작업 진행 현황 -->
+      <div style="display:flex; flex-direction:column; min-height:0;">
+        <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:8px;">📋 작업 진행 현황</div>
+        <table class="task-table">
+          <tr>
+            <th style="width:28px;">#</th>
+            <th>작업</th>
+            <th style="width:200px;">담당</th>
+            <th style="width:108px;">일정</th>
+            <th style="width:72px;">상태</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>일반 문항 → 게임 문항 변환 문항 풀 확인</td>
+            <td>전략 Cell</td>
+            <td>3월 ~ 4월 1주</td>
+            <td><span class="badge b-done">완료</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>변환 기능 개발</td>
+            <td>개발 Cell</td>
+            <td>4월 1~2주</td>
+            <td><span class="badge b-done">완료</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>게임 템플릿 변환 (1차 검토)</td>
+            <td>CBS기획운영 Cell</td>
+            <td>4월 2주</td>
+            <td><span class="badge b-done">완료</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>AI 문항 검수 전 <strong>1차 필터링</strong> 가능 여부 확인</td>
+            <td>기술연구소 (w. CBS기획운영)</td>
+            <td>4월 2주</td>
+            <td><span class="badge b-ing">진행중</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>게임 템플릿 유형 기획 <span class="task-tag">5지선다 추가 요청</span></td>
+            <td>전략 Cell</td>
+            <td>4월 2주</td>
+            <td><span class="badge b-ing">진행중</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>게임 5지선다 템플릿 유형 개발</td>
+            <td>에듀게임전략 Cell</td>
+            <td>4월 3주</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>일반 문항 → 게임 문항 컨버팅</td>
+            <td>CBS기획운영 Cell</td>
+            <td>4월 3주</td>
+            <td><span class="badge b-ing">진행중</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>컨버팅 문항 검수</td>
+            <td>전략 Cell</td>
+            <td>4월 말</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>교과과정 단위 묶기 → 세트지 편성</td>
+            <td>(미정)</td>
+            <td>5월</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>게임 DB 적재 → 서비스 제공</td>
+            <td>개발 Cell</td>
+            <td>5월 말</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 우: 문항 풀 구성 + 이슈 -->
+      <div style="display:flex; flex-direction:column; gap:10px; min-height:0;">
+        <div>
+          <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:8px;">📚 문항 풀 구성</div>
+          <div class="row3" style="gap:8px; grid-template-columns:1fr 1fr;">
+            <div class="need-box" style="background:#f3f6fa; border-color:var(--c-blue); padding:10px;">
+              <div style="font-size:16px; color:#666;">소스</div>
+              <div style="font-size:21px; font-weight:900; color:var(--c-blue);">AIDT/비바샘</div>
+              <div style="font-size:15px; color:#888; margin-top:2px;">일반 문항 풀</div>
+            </div>
+            <div class="need-box" style="background:#f3f6fa; border-color:var(--c-blue); padding:10px;">
+              <div style="font-size:16px; color:#666;">과목 범위</div>
+              <div style="font-size:23px; font-weight:900; color:var(--c-blue);">초·중·고</div>
+              <div style="font-size:15px; color:#888; margin-top:2px;">전과목</div>
+            </div>
+          </div>
+        </div>
+        <div class="alert" style="flex:1;">
+          <h5>⚠️ 이슈사항</h5>
+          <ul>
+            <li>AIDT 세트지 일반 문항 변형 방식 → <strong>컨버팅 시 중복 문항 발생 가능</strong></li>
+            <li>5지선다 비중 높음 → <strong>게임 템플릿 내 5지선다 유형 추가 필요</strong></li>
+            <li>일반 문항 → 게임 문항 변환 시 <strong>검수/수정 등 후작업 불가피</strong></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2811,75 +2839,103 @@ table tr:hover td { background: #f9fafb; }
     </div>
     <div class="s-sub">소스: 공부력 문항 풀 (초등 1~6학년 영어/국어/한국사/어휘/한자/수학) | 적용: ② 초등 올패키지, ③ 분위기 메이커</div>
   </div>
-  <div class="s-body">
-    <div class="row2" style="height:100%;">
-      <!-- STEP -->
-      <div style="display:flex; flex-direction:column;">
-        <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📋 STEP별 진행 현황</div>
-        <div class="steps">
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">01</div>
-            <div class="sb">
-              <h5>공부력 문항 풀 확인 + 데이터 구조 분석</h5>
-              <div class="sm">게임 Cell · 4월 2주 · <span class="badge b-ing">진행중</span></div>
-            </div>
-          </div>
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">02</div>
-            <div class="sb">
-              <h5>게임 템플릿 요구 조건 + 메타 정보 확인</h5>
-              <div class="sm">게임 Cell · 4월 2주 · <span class="badge b-ing">진행중</span></div>
-            </div>
-          </div>
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">03</div>
-            <div class="sb">
-              <h5>공부력 맞춤 템플릿 추가/수정 + 이미지/음원</h5>
-              <div class="sm">게임 + CBS기획운영 Cell · 4월 3주 · <span class="badge b-wait">대기</span></div>
-            </div>
-          </div>
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">04</div>
-            <div class="sb">
-              <h5>메타정보 등록 검토 + CBS 세팅</h5>
-              <div class="sm">CBS기획운영 Cell · 4월 4주 · <span class="badge b-wait">대기</span></div>
-            </div>
-          </div>
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">05</div>
-            <div class="sb">
-              <h5>공부력 문항 → CBS 게임 템플릿 개발/탑재</h5>
-              <div class="sm">CBS기획운영 Cell · 5월~ 과목 순차 · <span class="badge b-wait">대기</span></div>
-            </div>
-          </div>
-          <div class="step" style="border-left-color:var(--c-green);">
-            <div class="sn" style="background:var(--c-green);">06</div>
-            <div class="sb">
-              <h5>학년별/테마별 세트지 큐레이팅 → 서비스</h5>
-              <div class="sm">콘텐츠 기획 Cell · (미정) · <span class="badge b-wait">대기</span></div>
-            </div>
+  <div class="s-body" style="display:flex; flex-direction:column; gap:14px;">
+
+    <!-- 상단: 전체 진행률 -->
+    <div class="progress-summary" style="border-color: var(--c-green); background:#f0fdf4;">
+      <div class="progress-circle" style="background: linear-gradient(135deg, #16a34a, #4a7862);">
+        <div class="progress-percent">15<span>%</span></div>
+        <div class="progress-label">전체 진행률</div>
+      </div>
+      <div class="progress-bar-area">
+        <div class="progress-bar-row">
+          <div class="progress-bar">
+            <div class="progress-bar-fill done" style="width:0%;"></div>
+            <div class="progress-bar-fill ing" style="width:33%;"></div>
           </div>
         </div>
+        <div class="progress-stats">
+          <span class="ps-item"><span class="badge b-done">완료</span> 0건</span>
+          <span class="ps-item"><span class="badge b-ing">진행중</span> 2건</span>
+          <span class="ps-item"><span class="badge b-wait">대기</span> 4건</span>
+          <span class="ps-total">총 6건</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단: 좌(작업 진행 현황) / 우(문항 풀 + 이슈) -->
+    <div style="display:grid; grid-template-columns: 3fr 2fr; gap:18px; flex:1; min-height:0;">
+
+      <!-- 좌: 작업 진행 현황 -->
+      <div style="display:flex; flex-direction:column; min-height:0;">
+        <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:8px;">📋 작업 진행 현황</div>
+        <table class="task-table">
+          <tr>
+            <th style="width:28px;">#</th>
+            <th>작업</th>
+            <th style="width:200px;">담당</th>
+            <th style="width:108px;">일정</th>
+            <th style="width:72px;">상태</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>공부력 문항 풀 확인 + 데이터 구조 분석</td>
+            <td>게임 Cell</td>
+            <td>4월 2주</td>
+            <td><span class="badge b-ing">진행중</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>게임 템플릿 요구 조건 + 메타 정보 확인</td>
+            <td>게임 Cell</td>
+            <td>4월 2주</td>
+            <td><span class="badge b-ing">진행중</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>공부력 맞춤 템플릿 추가/수정 + 이미지/음원</td>
+            <td>게임 + CBS기획운영 Cell</td>
+            <td>4월 3주</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>메타정보 등록 검토 + CBS 세팅</td>
+            <td>CBS기획운영 Cell</td>
+            <td>4월 4주</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>공부력 문항 → CBS 게임 템플릿 개발/탑재</td>
+            <td>CBS기획운영 Cell</td>
+            <td>5월~ 순차</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>학년별/테마별 세트지 큐레이팅 → 서비스</td>
+            <td>콘텐츠 기획 Cell</td>
+            <td>(미정)</td>
+            <td><span class="badge b-wait">대기</span></td>
+          </tr>
+        </table>
       </div>
 
-      <!-- 활용 문항 + 이슈 -->
-      <div style="display:flex; flex-direction:column; gap:10px;">
+      <!-- 우: 문항 풀 구성 + 이슈 -->
+      <div style="display:flex; flex-direction:column; gap:10px; min-height:0;">
         <div>
-          <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:12px;">📚 공부력 문항 풀 구성</div>
-          <div class="row3" style="gap:8px;">
+          <div style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:8px;">📚 공부력 문항 풀 구성</div>
+          <div class="row3" style="gap:8px; grid-template-columns:1fr 1fr;">
             <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
-              <div style="font-size:14px; color:#666;">학년</div>
-              <div style="font-size:21px; font-weight:900; color:var(--c-green);">초 1~6</div>
+              <div style="font-size:16px; color:#666;">학년</div>
+              <div style="font-size:23px; font-weight:900; color:var(--c-green);">초 1~6</div>
+              <div style="font-size:15px; color:#888; margin-top:2px;">초등 전학년</div>
             </div>
             <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
-              <div style="font-size:14px; color:#666;">과목</div>
-              <div style="font-size:21px; font-weight:900; color:var(--c-green);">6과목</div>
-              <div style="font-size:13px; color:#888; margin-top:2px;">영·국·한국사·어휘·한자·수</div>
-            </div>
-            <div class="need-box" style="background:#ecfdf5; border-color:var(--c-green); padding:10px;">
-              <div style="font-size:14px; color:#666;">활용 패키지</div>
-              <div style="font-size:21px; font-weight:900; color:var(--c-green);">2종</div>
-              <div style="font-size:13px; color:#888; margin-top:2px;">② 올패키지, ③ 분위기</div>
+              <div style="font-size:16px; color:#666;">과목</div>
+              <div style="font-size:23px; font-weight:900; color:var(--c-green);">6과목</div>
+              <div style="font-size:15px; color:#888; margin-top:2px;">영·국·한국사·어휘·한자·수</div>
             </div>
           </div>
         </div>
@@ -2893,6 +2949,7 @@ table tr:hover td { background: #f9fafb; }
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -3139,7 +3196,7 @@ table tr:hover td { background: #f9fafb; }
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t3">3-1</div>
-      <div class="s-title">세트지 선택 화면안 ① <span style="font-size:18px; color:#6b7280; font-weight:600;">— 추천 / 큐레이션 (디폴트)</span></div>
+      <div class="s-title">세트지 선택 화면안 ① <span style="font-size:20px; color:#6b7280; font-weight:600;">— 추천 / 큐레이션 (디폴트)</span></div>
     </div>
     <div class="s-sub">교사가 처음 진입했을 때 보이는 화면 — 추천 세트지 + 카테고리 + Top 10 + 교과서별 맞춤</div>
   </div>
@@ -3224,7 +3281,7 @@ table tr:hover td { background: #f9fafb; }
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t3">3-2</div>
-      <div class="s-title">세트지 선택 화면안 ② <span style="font-size:18px; color:#6b7280; font-weight:600;">— 필터 / 모드별 depth 구조</span></div>
+      <div class="s-title">세트지 선택 화면안 ② <span style="font-size:20px; color:#6b7280; font-weight:600;">— 필터 / 모드별 depth 구조</span></div>
     </div>
     <div class="s-sub">특정 교과/과목 필터로 검색 및 브라우징 — 필터 모드에 따라 depth 구조가 다름 (윤CP 협의 중)</div>
   </div>
