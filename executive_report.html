@@ -748,14 +748,14 @@ table tr:hover td { background: #f9fafb; }
 .task-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
 }
 .task-table th {
   background: var(--primary);
   color: #fff;
   padding: 5px 8px;
   text-align: left;
-  font-size: 13.5px;
+  font-size: 15.5px;
   font-weight: 700;
 }
 .task-table td {
@@ -853,54 +853,59 @@ table tr:hover td { background: #f9fafb; }
 }
 .cd-step-body { flex: 1; min-width: 0; }
 .cd-step-body h5 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: #1a1a2e;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   line-height: 1.3;
 }
 .cd-step-body p {
-  font-size: 13px;
+  font-size: 13.5px;
   color: #555;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 .step-warn {
   display: inline-block;
-  font-size: 10.5px;
+  font-size: 12px;
   color: #a05a3d;
   background: #fff7ed;
-  padding: 1px 6px;
+  padding: 2px 7px;
   border-radius: 3px;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 /* D안: 지식요인/AI 파트너 표 */
 .cd-tables {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
+  align-content: start;
+  align-items: stretch;
+  height: 100%;
 }
 .cd-info-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11.5px;
+  font-size: 14.5px;
   background: #fff;
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid #e5e7eb;
+  height: fit-content;
 }
 .cd-info-table th {
   background: var(--c-purple);
   color: #fff;
-  padding: 4px 8px;
+  padding: 8px 12px;
   text-align: left;
-  font-size: 13px;
+  font-size: 14.5px;
   font-weight: 700;
 }
 .cd-info-table td {
-  padding: 4px 8px;
+  padding: 8px 12px;
   border-bottom: 1px solid #f3f4f6;
   vertical-align: middle;
+  line-height: 1.4;
 }
 .cd-info-table tr:last-child td { border-bottom: none; }
 
@@ -908,29 +913,29 @@ table tr:hover td { background: #f9fafb; }
 .cd-bottom {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 .cd-issue-box {
   background: #fff;
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 14px 16px;
   border-left: 4px solid;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .cd-issue-box h6 {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: 0.3px;
 }
 .cd-issue-box ul {
-  padding-left: 16px;
-  font-size: 11.5px;
-  color: #555;
-  line-height: 1.5;
+  padding-left: 20px;
+  font-size: 14.5px;
+  color: #444;
+  line-height: 1.55;
 }
-.cd-issue-box li { margin-bottom: 2px; }
+.cd-issue-box li { margin-bottom: 5px; }
 .cd-issue-reason {
   background: #fff7ed;
   border-color: #d97706;
@@ -1097,60 +1102,164 @@ table tr:hover td { background: #f9fafb; }
 .detail-table tr:last-child td { border-bottom: none; }
 
 /* ═══════════════════ */
-/*  2-2 패키지 7종 그리드 */
+/*  2-1 카테고리 스택  */
 /* ═══════════════════ */
-.pkg7-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+.pkg-cat-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
 }
-.pkg7-grid .pkg-card {
-  padding: 12px 14px;
+.pkg-cat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 7px 12px 8px;
+  border-radius: 8px;
+  border-left: 5px solid;
+  background: #f8f9fb;
+  min-height: 0;
+  justify-content: center;
 }
-.pkg7-grid .pkg-card .pn {
+.pcat-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 900;
-  font-size: 18px;
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
-.pkg-mvp { border-color: var(--c-green) !important; background: #f4faf5; }
-.pkg-after { border-color: var(--c-orange) !important; background: #faf5f0; }
+.pcat-ico { font-size: 18px; line-height: 1; }
+.pcat-name { font-size: 17px; font-weight: 900; line-height: 1.1; }
+.pcat-count {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1.5px solid currentColor;
+}
+.pcat-concept {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+.pcat-subs {
+  font-size: 12.5px;
+  color: #1a1a2e;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.pkg-cat.pcat-c1 { border-color: var(--c-blue); }
+.pkg-cat.pcat-c1 .pcat-name, .pkg-cat.pcat-c1 .pcat-count { color: var(--c-blue); }
+.pkg-cat.pcat-c2 { border-color: var(--c-green); }
+.pkg-cat.pcat-c2 .pcat-name, .pkg-cat.pcat-c2 .pcat-count { color: var(--c-green); }
+.pkg-cat.pcat-c3 { border-color: var(--c-red); }
+.pkg-cat.pcat-c3 .pcat-name, .pkg-cat.pcat-c3 .pcat-count { color: var(--c-red); }
+.pkg-cat.pcat-c4 { border-color: var(--c-purple); }
+.pkg-cat.pcat-c4 .pcat-name, .pkg-cat.pcat-c4 .pcat-count { color: var(--c-purple); }
+.pkg-cat.pcat-c5 { border-color: var(--c-orange); }
+.pkg-cat.pcat-c5 .pcat-name, .pkg-cat.pcat-c5 .pcat-count { color: var(--c-orange); }
 
 /* ═══════════════════ */
-/*  2-2 패키지 7종 표  */
+/*  2-2 카테고리 그룹  */
 /* ═══════════════════ */
-.pkg7-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 19px;
-  border: 2px solid #c44b3a;
-  border-radius: 8px;
-  overflow: hidden;
+.pkg-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
 }
-.pkg7-table th {
-  background: #f9fafb;
-  color: #1a1a2e;
-  padding: 14px 16px;
-  text-align: left;
-  font-weight: 700;
-  font-size: 17px;
-  border-bottom: 2px solid #c44b3a;
-  border-right: 1px solid #e5e7eb;
+.pkg-group {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 14px;
+  padding: 9px 14px 9px 16px;
+  border-radius: 6px;
+  background: #fafbfc;
+  border: 1px solid #edf0f4;
+  border-left: 5px solid;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
 }
-.pkg7-table th:last-child { border-right: none; }
-.pkg7-table td {
-  padding: 13px 16px;
-  border-bottom: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  vertical-align: middle;
+.pg-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
 }
-.pkg7-table td:last-child { border-right: none; }
-.pkg7-table tr:last-child td { border-bottom: none; }
-.pkg7-table tr:hover td { background: #f9fafc; }
-.p7-num { font-size: 24px; font-weight: 900; color: #4a78a6; text-align: center; }
-.p7-name { font-size: 19px; font-weight: 800; color: #1a1a2e; }
+.pg-icon {
+  font-size: 20px;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+.pg-title {
+  font-size: 18.5px;
+  font-weight: 900;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+.pg-concept {
+  font-size: 12.5px;
+  color: #6b7280;
+  opacity: 1;
+  line-height: 1.35;
+}
+.pg-cards {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  min-width: 0;
+}
+.pg-card {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.pgc-name {
+  font-size: 16.5px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 5px;
+  color: #111827;
+}
+.pgc-desc {
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.45;
+}
+.pgc-ex {
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.4;
+  margin-top: auto;
+  padding-top: 5px;
+}
+.pgc-key {
+  background: linear-gradient(transparent 55%, #fef08a 55%);
+  font-weight: 800;
+  color: #111827;
+  padding: 0 2px;
+}
+.pg-blue   { border-left-color: var(--c-blue); }
+.pg-blue .pg-title, .pg-blue .pg-icon { color: var(--c-blue); }
+.pg-green  { border-left-color: var(--c-green); }
+.pg-green .pg-title, .pg-green .pg-icon { color: var(--c-green); }
+.pg-red    { border-left-color: var(--c-red); }
+.pg-red .pg-title, .pg-red .pg-icon { color: var(--c-red); }
+.pg-purple { border-left-color: var(--c-purple); }
+.pg-purple .pg-title, .pg-purple .pg-icon { color: var(--c-purple); }
+.pg-orange { border-left-color: var(--c-orange); }
+.pg-orange .pg-title, .pg-orange .pg-icon { color: var(--c-orange); }
 
 /* ═══════════════════ */
 /*  3-1 큐레이션 표    */
@@ -1558,6 +1667,95 @@ table tr:hover td { background: #f9fafb; }
   white-space: nowrap;
 }
 .depth-badge.d-none { background: #e5e7eb; color: #6b7280; }
+
+/* 3-1 통합 세트지 — 3컬럼 레이아웃 helper */
+.set3-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.set3-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.set3-col-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.set3-col-title strong { color: var(--c-purple); }
+.set-legend-head {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed #e5e7eb;
+  margin-bottom: 2px;
+}
+.set-legend-head:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.area-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #333;
+  margin-bottom: 3px;
+}
+.area-item strong { color: #111827; font-weight: 700; }
+.area-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.a-blue { background: #4a78a6; }
+.a-green { background: #4a7862; }
+.a-orange { background: #a05a3d; }
+.a-purple { background: #6b4a8a; }
+
+/* 큐레이션 Row 전용 표 */
+.curation-row-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.curation-row-table th {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+}
+.curation-row-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+.curation-row-table tr:last-child td { border-bottom: none; }
 .depth-badge.d-2    { background: #d1fae5; color: #065f46; }
 .depth-badge.d-3    { background: #dbeafe; color: #1e40af; }
 .depth-badge.d-4    { background: #fed7aa; color: #9a3412; }
@@ -2061,7 +2259,7 @@ table tr:hover td { background: #f9fafb; }
   <h1>에듀테크플랫폼<br><em>3D 퀴즈 게임</em></h1>
   <p class="cover-sub">콘텐츠 전략 &amp; 프로젝트 진행 현황 보고</p>
   <div class="cover-stats">
-    <div class="cover-stat"><div class="v">7종</div><div class="l">상품 패키지</div></div>
+    <div class="cover-stat"><div class="v">15팩</div><div class="l">상품 패키지</div></div>
     <div class="cover-stat"><div class="v">4가지</div><div class="l">수급 방법론</div></div>
     <div class="cover-stat"><div class="v">6/15</div><div class="l">MVP 론칭</div></div>
     <div class="cover-stat"><div class="v">9월</div><div class="l">정식 오픈</div></div>
@@ -2105,10 +2303,9 @@ table tr:hover td { background: #f9fafb; }
         <div class="toc-num">03</div>
         <div class="toc-main">사용자 플로우</div>
         <div class="toc-list">
-          <a class="toc-item" data-go="12"><span class="ti-n">3-1.</span>세트지 선택 ① — 추천</a>
-          <a class="toc-item" data-go="13"><span class="ti-n">3-2.</span>세트지 선택 ② — 필터</a>
-          <a class="toc-item" data-go="14"><span class="ti-n">3-3.</span>교사 화면 플로우</a>
-          <a class="toc-item" data-go="15"><span class="ti-n">3-4.</span>학생 화면 플로우</a>
+          <a class="toc-item" data-go="12"><span class="ti-n">3-1.</span>세트지 선택 화면안</a>
+          <a class="toc-item" data-go="13"><span class="ti-n">3-2.</span>교사 화면 플로우</a>
+          <a class="toc-item" data-go="14"><span class="ti-n">3-3.</span>학생 화면 플로우</a>
         </div>
       </div>
     </div>
@@ -2327,7 +2524,7 @@ table tr:hover td { background: #f9fafb; }
       <div class="s-tag t2">2-1</div>
       <div class="s-title">콘텐츠 기획 한눈에 보기</div>
     </div>
-    <div class="s-sub">교사 핵심 니즈 → 상품 패키지 7종 → 수급 방법론 4가지</div>
+    <div class="s-sub">교사 핵심 니즈 → 상품 패키지 5대 카테고리 · 15개 세부 팩 → 수급 방법론 4가지</div>
   </div>
   <div class="s-body" style="display:grid; grid-template-columns: 1.2fr 36px 2.8fr 36px 1.6fr; gap:10px; align-items:stretch;">
 
@@ -2371,73 +2568,54 @@ table tr:hover td { background: #f9fafb; }
 
     <!-- 2단: 상품 패키지 -->
     <div style="display:flex; flex-direction:column; min-height:0;">
-      <div class="sec-heading">🎁 상품 패키지 7종</div>
-      <table class="pkg-main-table">
-        <tr>
-          <th style="width:26px;">#</th>
-          <th style="width:130px; white-space:nowrap;">패키지명</th>
-          <th>한줄 컨셉</th>
-          <th>타겟 대상</th>
-          <th style="width:44px;">방법</th>
-          <th style="width:72px;">단계</th>
-        </tr>
-        <tr>
-          <td class="pnum mvp-dot">1</td>
-          <td class="pname">교과서 프리패스</td>
-          <td>우리 반 교과서가 뭐든 OK —<br>검인정 10개 출판사 전 단원 세트 완비</td>
-          <td>초 · 중 · 고 전체 교사</td>
-          <td><span class="badge b-a">A</span></td>
-          <td><span class="badge b-mvp">MVP</span></td>
-        </tr>
-        <tr>
-          <td class="pnum mvp-dot">2</td>
-          <td class="pname">초등 올패키지</td>
-          <td>초3 담임이면 초3 국·영·수·사·과 1년치 —<br>학년만 고르면 담임 올인원</td>
-          <td>초등 담임 교사</td>
-          <td><span class="badge b-b">B</span></td>
-          <td><span class="badge b-mvp">MVP</span></td>
-        </tr>
-        <tr>
-          <td class="pnum mvp-dot">3</td>
-          <td class="pname">분위기 메이커</td>
-          <td>산만한 교실도 5분 만에 몰입 모드 —<br>아이스브레이킹·집중력 장전 세트</td>
-          <td>전체 교사 (아이스브레이킹)</td>
-          <td><span class="badge b-b">B</span></td>
-          <td><span class="badge b-mvp">MVP</span></td>
-        </tr>
-        <tr>
-          <td class="pnum after-dot">4</td>
-          <td class="pname">과목 직격탄</td>
-          <td>중·고 한 과목 전문 교사 전용 —<br>단원별·유형별 심화 세트지</td>
-          <td>중 · 고 교과 담당</td>
-          <td><span class="badge b-a">A</span></td>
-          <td><span class="badge b-after">MVP 이후</span></td>
-        </tr>
-        <tr>
-          <td class="pnum after-dot">5</td>
-          <td class="pname">시즌 이벤트</td>
-          <td>개학·한글날·과학의 날·수능·졸업 —<br>계기수업에 딱 맞춘 테마 세트</td>
-          <td>전체 교사</td>
-          <td><span class="badge b-a">A</span></td>
-          <td><span class="badge b-after">MVP 이후</span></td>
-        </tr>
-        <tr>
-          <td class="pnum after-dot">6</td>
-          <td class="pname">시험 저격수</td>
-          <td>출판사·학년·단원별 기출 패턴 세트지 —<br>중간·기말 2주 전 바로 투입</td>
-          <td>중 · 고 교과 담당</td>
-          <td><span class="badge b-a">A</span></td>
-          <td><span class="badge b-after">MVP 이후</span></td>
-        </tr>
-        <tr>
-          <td class="pnum after-dot">7</td>
-          <td class="pname">내 교재 그대로</td>
-          <td>오투·완자·수매쓰 PDF 업로드 →<br>우리 학원 교재 그대로 게임 세트로</td>
-          <td>학원 · 개인 학습자</td>
-          <td><span class="badge b-c">C</span></td>
-          <td><span class="badge b-after">MVP 이후</span></td>
-        </tr>
-      </table>
+      <div class="sec-heading">🎁 상품 패키지 <span style="color:#c44b3a;">5대 카테고리</span> · 15개 세부 팩</div>
+      <div class="pkg-cat-stack">
+        <div class="pkg-cat pcat-c1">
+          <div class="pcat-head">
+            <span class="pcat-ico">🎯</span>
+            <span class="pcat-name">선 넘는 퀴즈 광장</span>
+            <span class="pcat-count">3팩</span>
+          </div>
+          <div class="pcat-concept">교과·학년·교과서 경계 없이 넘나드는 광범위 편성</div>
+          <div class="pcat-subs">학년 통합 레이드 · 과목 믹스 챌린지 · 모두의 교과서 공략</div>
+        </div>
+        <div class="pkg-cat pcat-c2">
+          <div class="pcat-head">
+            <span class="pcat-ico">🎈</span>
+            <span class="pcat-name">슬기로운 교실 생활</span>
+            <span class="pcat-count">3팩</span>
+          </div>
+          <div class="pcat-concept">쉬는 시간 · 수업 전후 · 5분~20분 부담 없이 바로 투입</div>
+          <div class="pcat-subs">쉬는 시간 상식 배틀 · 0교시 아이스브레이킹 · 타임어택 클래스</div>
+        </div>
+        <div class="pkg-cat pcat-c3">
+          <div class="pcat-head">
+            <span class="pcat-ico">💯</span>
+            <span class="pcat-name">만점 연구소</span>
+            <span class="pcat-count">3팩</span>
+          </div>
+          <div class="pcat-concept">중간·기말 대비 집중 공략<br>내신·오답·단원평가 타깃</div>
+          <div class="pcat-subs">내신 정복 원정대 · 오답 함정 탈출 · 단원 격파 퀴즈</div>
+        </div>
+        <div class="pkg-cat pcat-c4">
+          <div class="pcat-head">
+            <span class="pcat-ico">🎚️</span>
+            <span class="pcat-name">레벨별 학습존</span>
+            <span class="pcat-count">3팩</span>
+          </div>
+          <div class="pcat-concept">수준 타겟팅<br>하위권 · 학년말 복습 · 상위권 선행</div>
+          <div class="pcat-subs">기초 다시잡기 · 지식 심폐소생술 · 레벨업 원정대</div>
+        </div>
+        <div class="pkg-cat pcat-c5">
+          <div class="pcat-head">
+            <span class="pcat-ico">🎄</span>
+            <span class="pcat-name">시즌 이벤트 퀴즈존</span>
+            <span class="pcat-count">3팩</span>
+          </div>
+          <div class="pcat-concept">새학기 · 월별 테마 · 학기 마무리<br>계절·시즌 맞춤</div>
+          <div class="pcat-subs">첫 단추 적응 완료 · 라스트팡 학기 엔딩 · 테마 데이 콘텐츠</div>
+        </div>
+      </div>
     </div>
 
     <!-- 흐름 화살표 2 -->
@@ -2477,104 +2655,149 @@ table tr:hover td { background: #f9fafb; }
   </div>
 </div>
 
-<!-- ────── Slide 6: 2-2 패키지 7종 ────── -->
+<!-- ────── Slide 6: 2-2 패키지 5대 카테고리 · 15개 세부 팩 ────── -->
 <div class="slide" data-slide="6">
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t2">2-2</div>
-      <div class="s-title">패키지</div>
+      <div class="s-title">패키지 <span style="font-size:20px; color:#6b7280; font-weight:600;">— 5대 카테고리 · 15개 세부 팩</span></div>
     </div>
-    <div class="s-sub">패키지 7종 카드 (이름 / 컨셉 / 타겟 / 시점)</div>
+    <div class="s-sub">교사가 패키지 이름만 보고 즉시 "이거구나" 알 수 있도록 — 이용 목적 기반 카테고리화</div>
   </div>
-  <div class="s-body" style="display:flex; flex-direction:column; gap:12px;">
+  <div class="s-body" style="display:flex; flex-direction:column;">
+    <div class="pkg-groups">
 
-    <!-- 상단: 카드 7개 (MVP 그룹 / MVP 이후 그룹) -->
-    <div style="display:flex; flex-direction:column; gap:10px;">
-      <!-- MVP 그룹 -->
-      <div style="background:#ecfdf5; border-radius:12px; padding:10px 14px; border:2px solid var(--c-green);">
-        <div style="font-size:16px; font-weight:800; color:var(--c-green); margin-bottom:8px;">▎MVP (~5월) — 교사 핵심 니즈 즉시 대응</div>
-        <div class="row3" style="gap:8px;">
-          <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-blue);">1</span> 교과서 프리패스</div>
-            <div class="pcc">우리 반 교과서가 뭐든 OK —<br>검인정 10개 출판사 전 단원 세트 완비</div>
-            <div class="pt"><strong>타겟:</strong> 초/중/고 전체 교사</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-blue);">A.</strong> AIDT/비바샘 → 컨버트<br>
-              <strong style="color:var(--c-purple);">D.</strong> 지식요인별 자동 매핑
-            </div>
-            <div class="pe">예: 중3 수학 인수분해 / 고1 영어 독해</div>
+      <!-- ① 선 넘는 퀴즈 광장 -->
+      <div class="pkg-group pg-blue">
+        <div class="pg-header">
+          <div class="pg-icon">🎯</div>
+          <div class="pg-title">선 넘는 퀴즈 광장</div>
+          <div class="pg-concept">교과·학년·교과서 경계 없이 넘나드는 광범위 편성</div>
+        </div>
+        <div class="pg-cards">
+          <div class="pg-card">
+            <div class="pgc-name">학년 통합 레이드 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">학교급별 전학년</span> 통째로 묶음 — 혼합반에도 OK</div>
+            <div class="pgc-ex">예: 초등 저학년 / 초등 고학년 / 중등 전체 / 고등 전체</div>
           </div>
-          <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-green);">2</span> 초등 올패키지</div>
-            <div class="pcc">초3 담임이면 초3 국·영·수·사·과 1년치 —<br>학년만 고르면 담임 올인원</div>
-            <div class="pt"><strong>타겟:</strong> 초등 담임 교사</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-green);">B.</strong> 공부력 → 학년별 편성<br>
-              <strong style="color:var(--c-purple);">D.</strong> 학년별 자동 큐레이팅
-            </div>
-            <div class="pe">예: 초3 → 국·수·사·과 전과목 세트</div>
+          <div class="pg-card">
+            <div class="pgc-name">과목 믹스 챌린지 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">유관 과목 간 교차</span> 세트 — 융합수업·통합교과</div>
+            <div class="pgc-ex">예: 국어+사회 / 수학+과학 / 역사+국어</div>
           </div>
-          <div class="pkg-card" style="border-color:var(--c-green); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-orange);">4</span> 분위기 메이커</div>
-            <div class="pcc">산만한 교실도 5분 만에 몰입 모드 —<br>아이스브레이킹·집중력 장전 세트</div>
-            <div class="pt"><strong>타겟:</strong> 전체 교사 (아이스브레이킹)</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-green);">B.</strong> 넌센스/오늘의 상식<br>
-              <strong style="color:var(--c-purple);">D.</strong> OpenAI+Wiki 시사 자동
-            </div>
-            <div class="pe">예: 아재 개그 배틀 / 이번 주 시사 퀴즈</div>
+          <div class="pg-card">
+            <div class="pgc-name">모두의 교과서 공략 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">교과서 종류별</span> 묶음 — 사용 교과서 뭐든 매칭</div>
+            <div class="pgc-ex">예: 비상 · 천재 · YBM · 동아 · 금성 등 10개 출판사</div>
           </div>
         </div>
       </div>
 
-      <!-- MVP 이후 그룹 -->
-      <div style="background:#fff7ed; border-radius:12px; padding:10px 14px; border:2px solid var(--c-orange);">
-        <div style="font-size:16px; font-weight:800; color:var(--c-orange); margin-bottom:8px;">▎MVP 이후 (~8월) — 대상/활용 범위 확장</div>
-        <div class="row4" style="gap:8px;">
-          <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-red);">3</span> 과목 직격탄</div>
-            <div class="pcc">중·고 한 과목 전문 교사 전용 —<br>단원별·유형별 심화 세트지</div>
-            <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-blue);">A.</strong> 비바샘 → 지식요인별<br>
-              <strong style="color:var(--c-purple);">D.</strong> 보인/레스퍼 유사 문항
-            </div>
-            <div class="pe">예: 이차방정식 / 관계대명사</div>
+      <!-- ② 슬기로운 교실 생활 -->
+      <div class="pkg-group pg-green">
+        <div class="pg-header">
+          <div class="pg-icon">🎈</div>
+          <div class="pg-title">슬기로운 교실 생활</div>
+          <div class="pg-concept">쉬는 시간·수업 전후 가볍게 투입<br>부담 Zero</div>
+        </div>
+        <div class="pg-cards">
+          <div class="pg-card">
+            <div class="pgc-name">쉬는 시간 상식 배틀 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">일반 상식·국가 퀴즈·넌센스</span> — 시험 후/쉬는 시간 통용</div>
+            <div class="pgc-ex">예: 세계 국기 / 넌센스 퀴즈 / 오늘의 상식 / 아재 개그</div>
           </div>
-          <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-purple);">5</span> 시즌 이벤트</div>
-            <div class="pcc">개학·한글날·과학의 날·수능·졸업 —<br>계기수업에 딱 맞춘 테마 세트</div>
-            <div class="pt"><strong>타겟:</strong> 전체 교사</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-blue);">A.</strong> 월별 행사 테마 세트지<br>
-              <strong style="color:var(--c-purple);">D.</strong> 교사 저작 → 광장 UGC
-            </div>
-            <div class="pe">예: 한글날 맞춤법 / 과학의 날 배틀</div>
+          <div class="pg-card">
+            <div class="pgc-name">0교시 아이스브레이킹 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">수업 시작 직전</span> 가벼운 교과 문제 — 집중력 장전</div>
+            <div class="pgc-ex">예: 수학 워밍업 / 영어 단어 준비운동</div>
           </div>
-          <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:#64748b;">6</span> 시험 저격수</div>
-            <div class="pcc">출판사·학년·단원별 기출 패턴 세트지 —<br>중간·기말 2주 전 바로 투입</div>
-            <div class="pt"><strong>타겟:</strong> 중/고 교과 담당</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-blue);">A.</strong> 단원/난이도 태그<br>
-              <strong style="color:var(--c-purple);">D.</strong> 기출 패턴 출제 예상
-            </div>
-            <div class="pe">예: 중간고사 2주전 수학 기본/심화</div>
-          </div>
-          <div class="pkg-card" style="border-color:var(--c-orange); padding:10px 12px;">
-            <div class="pn"><span class="pic" style="background:var(--c-cyan);">7</span> 내 교재 그대로</div>
-            <div class="pcc">오투·완자·수매쓰 PDF 업로드 →<br>우리 학원 교재 그대로 게임 세트로</div>
-            <div class="pt"><strong>타겟:</strong> 학원/개인 학습자</div>
-            <div style="font-size:15px; line-height:1.6;">
-              <strong style="color:var(--c-orange);">C.</strong> 교재 PDF → OCR<br>
-              <strong style="color:var(--c-purple);">D.</strong> AI OCR 자동화 + 태깅
-            </div>
-            <div class="pe">예: 오투 생물 / 완자 수학</div>
+          <div class="pg-card">
+            <div class="pgc-name">타임어택 클래스 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">5분 / 10분 / 20분</span> 시간 기준 세트 — 남은 시간 맞춤</div>
+            <div class="pgc-ex">예: 5분 스피드 / 10분 집중 / 20분 챌린지</div>
           </div>
         </div>
       </div>
+
+      <!-- ③ 만점 연구소 -->
+      <div class="pkg-group pg-red">
+        <div class="pg-header">
+          <div class="pg-icon">💯</div>
+          <div class="pg-title">만점 연구소</div>
+          <div class="pg-concept">시험 대비 집중 공략<br>내신·오답·단원평가 타깃</div>
+        </div>
+        <div class="pg-cards">
+          <div class="pg-card">
+            <div class="pgc-name">내신 정복 원정대 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">중간·기말고사 예상 문제</span> — 시즌 2주 전 투입</div>
+            <div class="pgc-ex">예: 중3 1학기 중간 / 고1 2학기 기말</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">오답 함정 탈출 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">오답률 높은 문제</span> 집중 — 헷갈리는 포인트 반복</div>
+            <div class="pgc-ex">예: 오답률 TOP 50 / 함정 문제 모음</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">단원 격파 퀴즈 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">교과서 단원평가 모음</span> — 단원 마무리 형성평가</div>
+            <div class="pgc-ex">예: 수학 단원평가 / 사회 쪽지시험</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ 레벨별 학습존 -->
+      <div class="pkg-group pg-purple">
+        <div class="pg-header">
+          <div class="pg-icon">🎚️</div>
+          <div class="pg-title">레벨별 학습존</div>
+          <div class="pg-concept">수준 타겟팅<br>하위권 · 학년말 복습 · 상위권 선행</div>
+        </div>
+        <div class="pg-cards">
+          <div class="pg-card">
+            <div class="pgc-name">기초 다시잡기 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">기초 부진 학생</span>용 — 과목별 기본기만 압축</div>
+            <div class="pgc-ex">예: 수학 기초 연산 / 영어 기본 문법</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">지식 심폐소생술 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">중3·고3 대상</span> — 이전 학년 핵심 개념 빠른 복습</div>
+            <div class="pgc-ex">예: 중1~2 복습 / 고1~2 핵심 정리</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">레벨업 원정대 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">상위권 선행</span> — 다음 학년 내용 미리보기</div>
+            <div class="pgc-ex">예: 초6 → 중1 / 중3 → 고1 프리뷰</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑤ 시즌 이벤트 퀴즈존 -->
+      <div class="pkg-group pg-orange">
+        <div class="pg-header">
+          <div class="pg-icon">🎄</div>
+          <div class="pg-title">시즌 이벤트 퀴즈존</div>
+          <div class="pg-concept">새학기·월별 테마·학기 마무리<br>시즌·이벤트 맞춤</div>
+        </div>
+        <div class="pg-cards">
+          <div class="pg-card">
+            <div class="pgc-name">첫 단추 적응 완료 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">새학기 적응용</span> 상식·기초 복습 문항</div>
+            <div class="pgc-ex">예: 3월 첫 주 / 개학 기념 세트</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">라스트팡 학기 엔딩 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">학기 전 범위 총정리</span> — 학기 마무리 복습</div>
+            <div class="pgc-ex">예: 1학기 총정리 / 2학기 엔딩 퀴즈</div>
+          </div>
+          <div class="pg-card">
+            <div class="pgc-name">테마 데이 콘텐츠 팩</div>
+            <div class="pgc-desc"><span class="pgc-key">월별 기념일·주간</span> 맞춤 — 독서의 달·과학의 달</div>
+            <div class="pgc-ex">예: 9월 독서의 달 / 4월 과학의 달</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-
   </div>
 </div>
 
@@ -2603,19 +2826,12 @@ table tr:hover td { background: #f9fafb; }
         <td><span class="badge b-after">MVP 이후</span></td>
         <td><span class="badge b-future">추후</span></td>
       </tr>
-      <tr>
-        <td><strong>적용 패키지</strong></td>
-        <td>① 교과서 프리패스<br>④ 과목 직격탄<br>⑤ 시즌 이벤트<br>⑥ 시험 저격수</td>
-        <td>② 초등 올패키지<br>③ 분위기 메이커</td>
-        <td>⑦ 내 교재 그대로</td>
-        <td>전 패키지</td>
-      </tr>
-      <tr>
-        <td><strong>컨셉</strong></td>
-        <td>기존 CBS 보유 문항 빠른 게임화</td>
-        <td>공부력 IP 활용 학년별/테마별 세트</td>
-        <td>교재 OCR 디지털화 후 게임화</td>
-        <td>지식요인 단위 AI 자동 문항 생성</td>
+      <tr style="background:#f8fafc;">
+        <td style="background:#eef2f7;"><strong style="color:var(--primary); font-size:15px;">💡 컨셉</strong></td>
+        <td style="font-weight:700; color:var(--c-blue); font-size:15px;">기존 CBS 보유 문항 빠른 게임화</td>
+        <td style="font-weight:700; color:var(--c-green); font-size:15px;">공부력 IP 활용 학년별/테마별 세트</td>
+        <td style="font-weight:700; color:var(--c-orange); font-size:15px;">교재 OCR 디지털화 후 게임화</td>
+        <td style="font-weight:700; color:var(--c-purple); font-size:15px;">지식요인 단위 AI 자동 문항 생성</td>
       </tr>
       <tr>
         <td><strong>타겟 과목</strong></td>
@@ -2730,70 +2946,70 @@ table tr:hover td { background: #f9fafb; }
             <td>1</td>
             <td>일반 문항 → 게임 문항 변환 문항 풀 확인</td>
             <td>전략 Cell</td>
-            <td>3월 ~ 4월 1주</td>
+            <td>3월 ~ 4월 2주</td>
             <td><span class="badge b-done">완료</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td>변환 기능 개발</td>
             <td>개발 Cell</td>
-            <td>4월 1~2주</td>
+            <td>4월 2~3주</td>
             <td><span class="badge b-done">완료</span></td>
           </tr>
           <tr>
             <td>3</td>
             <td>게임 템플릿 변환 (1차 검토)</td>
             <td>CBS기획운영 Cell</td>
-            <td>4월 2주</td>
+            <td>4월 3주</td>
             <td><span class="badge b-done">완료</span></td>
           </tr>
           <tr>
             <td>4</td>
             <td>AI 문항 검수 전 <strong>1차 필터링</strong> 가능 여부 확인</td>
             <td>기술연구소 (w. CBS기획운영)</td>
-            <td>4월 2주</td>
+            <td>4월 3주</td>
             <td><span class="badge b-ing">진행중</span></td>
           </tr>
           <tr>
             <td>5</td>
             <td>게임 템플릿 유형 기획 <span class="task-tag">5지선다 추가 요청</span></td>
             <td>전략 Cell</td>
-            <td>4월 2주</td>
+            <td>4월 3주</td>
             <td><span class="badge b-ing">진행중</span></td>
           </tr>
           <tr>
             <td>6</td>
             <td>게임 5지선다 템플릿 유형 개발</td>
             <td>에듀게임전략 Cell</td>
-            <td>4월 3주</td>
+            <td>4월 4주</td>
             <td><span class="badge b-wait">대기</span></td>
           </tr>
           <tr>
             <td>7</td>
             <td>일반 문항 → 게임 문항 컨버팅</td>
             <td>CBS기획운영 Cell</td>
-            <td>4월 3주</td>
+            <td>4월 4주</td>
             <td><span class="badge b-ing">진행중</span></td>
           </tr>
           <tr>
             <td>8</td>
             <td>컨버팅 문항 검수</td>
             <td>전략 Cell</td>
-            <td>4월 말</td>
+            <td>5월 1주</td>
             <td><span class="badge b-wait">대기</span></td>
           </tr>
           <tr>
             <td>9</td>
             <td>교과과정 단위 묶기 → 세트지 편성</td>
             <td>(미정)</td>
-            <td>5월</td>
+            <td>5월 중순</td>
             <td><span class="badge b-wait">대기</span></td>
           </tr>
           <tr>
             <td>10</td>
             <td>게임 DB 적재 → 서비스 제공</td>
             <td>개발 Cell</td>
-            <td>5월 말</td>
+            <td>6월 초</td>
             <td><span class="badge b-wait">대기</span></td>
           </tr>
         </table>
@@ -2844,20 +3060,20 @@ table tr:hover td { background: #f9fafb; }
     <!-- 상단: 전체 진행률 -->
     <div class="progress-summary" style="border-color: var(--c-green); background:#f0fdf4;">
       <div class="progress-circle" style="background: linear-gradient(135deg, #16a34a, #4a7862);">
-        <div class="progress-percent">15<span>%</span></div>
+        <div class="progress-percent">50<span>%</span></div>
         <div class="progress-label">전체 진행률</div>
       </div>
       <div class="progress-bar-area">
         <div class="progress-bar-row">
           <div class="progress-bar">
-            <div class="progress-bar-fill done" style="width:0%;"></div>
+            <div class="progress-bar-fill done" style="width:33%;"></div>
             <div class="progress-bar-fill ing" style="width:33%;"></div>
           </div>
         </div>
         <div class="progress-stats">
-          <span class="ps-item"><span class="badge b-done">완료</span> 0건</span>
+          <span class="ps-item"><span class="badge b-done">완료</span> 2건</span>
           <span class="ps-item"><span class="badge b-ing">진행중</span> 2건</span>
-          <span class="ps-item"><span class="badge b-wait">대기</span> 4건</span>
+          <span class="ps-item"><span class="badge b-wait">대기</span> 2건</span>
           <span class="ps-total">총 6건</span>
         </div>
       </div>
@@ -2881,35 +3097,35 @@ table tr:hover td { background: #f9fafb; }
             <td>1</td>
             <td>공부력 문항 풀 확인 + 데이터 구조 분석</td>
             <td>게임 Cell</td>
-            <td>4월 2주</td>
-            <td><span class="badge b-ing">진행중</span></td>
+            <td>4월 3주</td>
+            <td><span class="badge b-done">완료</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td>게임 템플릿 요구 조건 + 메타 정보 확인</td>
             <td>게임 Cell</td>
-            <td>4월 2주</td>
-            <td><span class="badge b-ing">진행중</span></td>
+            <td>4월 3주</td>
+            <td><span class="badge b-done">완료</span></td>
           </tr>
           <tr>
             <td>3</td>
             <td>공부력 맞춤 템플릿 추가/수정 + 이미지/음원</td>
             <td>게임 + CBS기획운영 Cell</td>
-            <td>4월 3주</td>
-            <td><span class="badge b-wait">대기</span></td>
+            <td>4월 4주</td>
+            <td><span class="badge b-ing">진행중</span></td>
           </tr>
           <tr>
             <td>4</td>
             <td>메타정보 등록 검토 + CBS 세팅</td>
             <td>CBS기획운영 Cell</td>
-            <td>4월 4주</td>
-            <td><span class="badge b-wait">대기</span></td>
+            <td>5월 1주</td>
+            <td><span class="badge b-ing">진행중</span></td>
           </tr>
           <tr>
             <td>5</td>
             <td>공부력 문항 → CBS 게임 템플릿 개발/탑재</td>
             <td>CBS기획운영 Cell</td>
-            <td>5월~ 순차</td>
+            <td>5월 중순~ 순차</td>
             <td><span class="badge b-wait">대기</span></td>
           </tr>
           <tr>
@@ -3191,180 +3407,115 @@ table tr:hover td { background: #f9fafb; }
   </div>
 </div>
 
-<!-- ────── Slide 12: 3-1 세트지 선택 ① 추천/큐레이션 ────── -->
+<!-- ────── Slide 12: 3-1 세트지 선택 화면안 (추천 + 필터 통합) ────── -->
 <div class="slide" data-slide="12">
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t3">3-1</div>
-      <div class="s-title">세트지 선택 화면안 ① <span style="font-size:20px; color:#6b7280; font-weight:600;">— 추천 / 큐레이션 (디폴트)</span></div>
+      <div class="s-title">세트지 선택 화면안 <span style="font-size:20px; color:#6b7280; font-weight:600;">— 추천 / 큐레이션 + 필터 depth 구조</span></div>
     </div>
-    <div class="s-sub">교사가 처음 진입했을 때 보이는 화면 — 추천 세트지 + 카테고리 + Top 10 + 교과서별 맞춤</div>
+    <div class="s-sub">디폴트(추천/카테고리/Top10/큐레이션) + 필터 모드별 depth 구조 (윤CP 협의 중)</div>
   </div>
-  <div class="s-body" style="display:flex; flex-direction:column; gap:12px;">
-    <div class="set-row">
-      <!-- 좌: 화면 캡처 (추천/카테고리 디폴트 모드) -->
-      <div class="set-mockup">
-        <a class="set-url" href="https://game-omega-hazel.vercel.app/sets" target="_blank" rel="noopener">
-          🔗 sets 페이지 열기
-        </a>
-        <div class="img-stack">
-          <img src="images/screen_default.png" alt="세트지 선택 화면 - 추천/카테고리">
-          <span class="marker m1" style="background:#4a78a6;">①</span>
-          <span class="marker m2" style="background:#4a7862;">②</span>
-          <span class="marker m3" style="background:#a05a3d;">③</span>
-          <span class="marker m4" style="background:#6b4a8a;">④</span>
+  <div class="s-body" style="display:flex; flex-direction:column;">
+    <div class="set3-grid">
+
+      <!-- ═══ Col 1: mockup + 영역 설명 (디폴트 4 + 필터 3) ═══ -->
+      <div class="set3-col">
+        <!-- mockup -->
+        <div class="set-mockup" style="flex: 0 0 auto; height: 220px; padding:6px; margin-bottom:10px;">
+          <a class="set-url" href="https://game-omega-hazel.vercel.app/sets" target="_blank" rel="noopener" style="font-size:12px; padding:4px 10px;">🔗 열기</a>
+          <div class="img-stack">
+            <img src="images/screen_default.png" alt="세트지 화면 - 디폴트">
+            <span class="marker m1" style="background:#4a78a6; width:22px; height:22px; font-size:13px;">①</span>
+            <span class="marker m2" style="background:#4a7862; width:22px; height:22px; font-size:13px;">②</span>
+            <span class="marker m3" style="background:#a05a3d; width:22px; height:22px; font-size:13px;">③</span>
+            <span class="marker m4" style="background:#6b4a8a; width:22px; height:22px; font-size:13px;">④</span>
+          </div>
+        </div>
+
+        <!-- 영역 설명 통합 -->
+        <div style="display:flex; flex-direction:column; min-height:0; overflow:hidden;">
+          <div class="set-legend-head">🖥️ 디폴트 화면 영역 (4)</div>
+          <div class="area-item"><span class="area-num a-blue">①</span><span><strong>메인 추천</strong> 히어로 · 오늘의 Pick</span></div>
+          <div class="area-item"><span class="area-num a-green">②</span><span><strong>카테고리</strong> 둘러보기 (8종)</span></div>
+          <div class="cat-chips" style="margin-left:26px; margin-bottom:4px; gap:3px;">
+            <span class="chip c-math" style="font-size:10.5px; padding:1px 5px;">📐수학</span>
+            <span class="chip c-eng" style="font-size:10.5px; padding:1px 5px;">🔤영어</span>
+            <span class="chip c-kor" style="font-size:10.5px; padding:1px 5px;">📖국어</span>
+            <span class="chip c-soc" style="font-size:10.5px; padding:1px 5px;">🌏사회</span>
+            <span class="chip c-sci" style="font-size:10.5px; padding:1px 5px;">🧪과학</span>
+            <span class="chip c-event" style="font-size:10.5px; padding:1px 5px;">🌸신학기</span>
+            <span class="chip c-ice" style="font-size:10.5px; padding:1px 5px;">❄️아이스</span>
+            <span class="chip c-fun" style="font-size:10.5px; padding:1px 5px;">😄유머</span>
+          </div>
+          <div class="area-item"><span class="area-num a-orange">③</span><span><strong>오늘의 Top 10</strong> · 인기 세트지</span></div>
+          <div class="area-item"><span class="area-num a-purple">④</span><span><strong>큐레이션 Row</strong> 8종 (우측 표 →)</span></div>
+
+          <div class="set-legend-head">🔎 필터 진입 시 (3)</div>
+          <div class="area-item"><span class="area-num a-blue">①</span><span><strong>새 퀴즈 만들기</strong> · 우상단 CTA</span></div>
+          <div class="area-item"><span class="area-num a-green">②</span><span><strong>출처 탭</strong> · 전체 99 / 공식 18 / 내가 16 / 타 56</span></div>
+          <div class="area-item"><span class="area-num a-orange">③</span><span><strong>검색창</strong> · 단원/지식요인 키워드</span></div>
         </div>
       </div>
-      <!-- 우: 영역별 설명 카드 4개 + 카드별 세부 정보 -->
-      <div class="set-desc-full">
-        <!-- ① 메인 추천 (단순) -->
-        <div class="set-card set-c-blue set-card-mini">
-          <div class="set-card-num">①</div>
-          <div class="set-card-body">
-            <h5>메인 추천 히어로 카드</h5>
-            <p>오늘의 Pick · 공식 추천 · 바로 시작</p>
-          </div>
-        </div>
 
-        <!-- ② 카테고리 (상세) -->
-        <div class="set-card set-c-green set-card-detail">
-          <div class="set-card-head">
-            <div class="set-card-num">②</div>
-            <h5>카테고리로 둘러보기 <strong>(8종)</strong></h5>
-          </div>
-          <div class="cat-chips">
-            <span class="chip c-math">📐 수학</span>
-            <span class="chip c-eng">🔤 영어</span>
-            <span class="chip c-kor">📖 국어</span>
-            <span class="chip c-soc">🌏 사회</span>
-            <span class="chip c-sci">🧪 과학</span>
-            <span class="chip c-event">🌸 신학기</span>
-            <span class="chip c-ice">❄️ 아이스브레이킹</span>
-            <span class="chip c-fun">😄 오늘의 유머</span>
-          </div>
-        </div>
-
-        <!-- ③ Top 10 (단순) -->
-        <div class="set-card set-c-orange set-card-mini">
-          <div class="set-card-num">③</div>
-          <div class="set-card-body">
-            <h5>오늘의 Top 10</h5>
-            <p>전국 선생님이 가장 많이 선택한 인기 세트지</p>
-          </div>
-        </div>
-
-        <!-- ④ 큐레이션 Row 상세 (메인 박스) -->
-        <div class="set-card set-c-purple set-card-detail">
-          <div class="set-card-head">
-            <div class="set-card-num">④</div>
-            <h5>큐레이션 Row 구성 <strong>(8종)</strong></h5>
-          </div>
-          <table class="detail-table mini-table">
-            <tr><th style="width:42%;">Row</th><th>기준 / 비고</th></tr>
-            <tr><td><strong>이어서 시작하기</strong></td><td>localStorage 영구 보관</td></tr>
-            <tr><td><strong>오늘의 Top 10</strong></td><td>상위 10개 <span class="cur-warn-inline">⚠️ 7일 기준 개선</span></td></tr>
-            <tr><td><strong>비상 5학년 선생님이세요?</strong></td><td>(과목+학년+교과서) 일치 <span class="cur-warn-inline">⚠️ Mock</span></td></tr>
-            <tr><td><strong>같은 학년, 다른 교재</strong></td><td>과목·학년 동일 + 교재만 다름</td></tr>
-            <tr><td><strong>선생님들의 별 5개</strong></td><td>상위 12개 <span class="cur-warn-inline">⚠️ 복합 점수 개선</span></td></tr>
-            <tr><td><strong>교과서별 둘러보기</strong></td><td>5개 교과서 × 공식 2개씩 (라운드로빈)</td></tr>
-            <tr><td><strong>이 문제집은 어떠세요?</strong></td><td>쎈·개념원리·유형 <span class="cur-warn-inline">⚠️ 중등+ 노출</span></td></tr>
-            <tr><td><strong>테마별 제안</strong></td><td>9개 테마 × 공식 2개씩 <span class="cur-ok-inline">✅</span></td></tr>
-          </table>
-        </div>
+      <!-- ═══ Col 2: 큐레이션 Row 8종 표 (핵심 ①) ═══ -->
+      <div class="set3-col">
+        <div class="set3-col-title">④ 큐레이션 Row 구성 <strong>(8종)</strong></div>
+        <table class="curation-row-table">
+          <tr><th style="width:40%;">Row</th><th>기준 / 비고</th></tr>
+          <tr><td><strong>이어서 시작하기</strong></td><td>localStorage 영구 보관</td></tr>
+          <tr><td><strong>오늘의 Top 10</strong></td><td>상위 10개 <span class="cur-warn-inline">⚠️ 7일 기준 개선</span></td></tr>
+          <tr><td><strong>비상 5학년 선생님이세요?</strong></td><td>(과목+학년+교과서) 일치 <span class="cur-warn-inline">⚠️ Mock</span></td></tr>
+          <tr><td><strong>같은 학년, 다른 교재</strong></td><td>과목·학년 동일 + 교재만 다름</td></tr>
+          <tr><td><strong>선생님들의 별 5개</strong></td><td>상위 12개 <span class="cur-warn-inline">⚠️ 복합 점수 개선</span></td></tr>
+          <tr><td><strong>교과서별 둘러보기</strong></td><td>5개 교과서 × 공식 2개씩 (라운드로빈)</td></tr>
+          <tr><td><strong>이 문제집은 어떠세요?</strong></td><td>쎈·개념원리·유형 <span class="cur-warn-inline">⚠️ 중등+ 노출</span></td></tr>
+          <tr><td><strong>테마별 제안</strong></td><td>9개 테마 × 공식 2개씩 <span class="cur-ok-inline">✅</span></td></tr>
+        </table>
       </div>
+
+      <!-- ═══ Col 3: 필터 depth 구조 표 (핵심 ②) ═══ -->
+      <div class="set3-col">
+        <div class="set3-col-title">🎯 필터 모드별 <strong>depth 구조</strong> (5모드)</div>
+        <table class="depth-table" style="font-size:13px;">
+          <tr><th style="padding:8px 10px; font-size:13px;">모드</th><th style="padding:8px 10px; font-size:13px;">depth</th><th style="padding:8px 10px; font-size:13px;">구조</th></tr>
+          <tr>
+            <td style="padding:8px 10px;"><span class="depth-icon">🔍</span> <strong>둘러보기</strong></td>
+            <td style="padding:8px 10px;"><span class="depth-badge d-none">없음</span></td>
+            <td style="padding:8px 10px;">검색만 (depth 없이 자유 탐색)</td>
+          </tr>
+          <tr class="depth-highlight">
+            <td style="padding:8px 10px;"><span class="depth-icon">📚</span> <strong>교과서별</strong></td>
+            <td style="padding:8px 10px;"><span class="depth-badge d-5">5-depth</span></td>
+            <td style="padding:8px 10px;">교과서 → 과목 → 학년 → 학기 → 단원</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;"><span class="depth-icon">📖</span> <strong>교재별</strong> (문제집)</td>
+            <td style="padding:8px 10px;"><span class="depth-badge d-3">3-depth</span></td>
+            <td style="padding:8px 10px;">문제집 → 학년 → 학기</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;"><span class="depth-icon">📐</span> <strong>과목별</strong></td>
+            <td style="padding:8px 10px;"><span class="depth-badge d-4">4-depth</span></td>
+            <td style="padding:8px 10px;">과목 → 학년/학기 → 단원 → 지식요인</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;"><span class="depth-icon">🎨</span> <strong>테마별</strong></td>
+            <td style="padding:8px 10px;"><span class="depth-badge d-2">2-depth</span></td>
+            <td style="padding:8px 10px;">테마 (간단 분류)</td>
+          </tr>
+        </table>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- ────── Slide 13: 3-2 세트지 선택 ② 필터 / depth ────── -->
+<!-- ────── Slide 13: 3-2 교사 화면 ────── -->
 <div class="slide" data-slide="13">
   <div class="s-head">
     <div class="s-head-l">
       <div class="s-tag t3">3-2</div>
-      <div class="s-title">세트지 선택 화면안 ② <span style="font-size:20px; color:#6b7280; font-weight:600;">— 필터 / 모드별 depth 구조</span></div>
-    </div>
-    <div class="s-sub">특정 교과/과목 필터로 검색 및 브라우징 — 필터 모드에 따라 depth 구조가 다름 (윤CP 협의 중)</div>
-  </div>
-  <div class="s-body" style="display:flex; flex-direction:column; gap:12px;">
-    <div class="set-row">
-      <!-- 좌: 화면 캡처 (필터 모드 - 교과서별 활성) -->
-      <div class="set-mockup">
-        <a class="set-url" href="https://game-omega-hazel.vercel.app/sets" target="_blank" rel="noopener">
-          🔗 sets 페이지 열기
-        </a>
-        <div class="img-stack">
-          <img src="images/screen_filter.png" alt="세트지 선택 화면 - 필터/depth">
-        </div>
-      </div>
-      <!-- 우: 영역별 설명 + depth 구조 표 -->
-      <div class="set-desc-2">
-        <!-- 상단: 화면 영역 (3개) -->
-        <div class="set-mini-row">
-          <div class="set-mini set-c-blue">
-            <div class="set-mini-num">①</div>
-            <div>
-              <h5>새 퀴즈 만들기</h5>
-              <p>우측 상단 CTA 버튼</p>
-            </div>
-          </div>
-          <div class="set-mini set-c-green">
-            <div class="set-mini-num">②</div>
-            <div>
-              <h5>출처 탭</h5>
-              <p>전체 99 · 공식 18 · 내가 16 · 다른 선생님 56</p>
-            </div>
-          </div>
-          <div class="set-mini set-c-orange">
-            <div class="set-mini-num">③</div>
-            <div>
-              <h5>검색창</h5>
-              <p>단원/지식요인 키워드 직접 입력</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 메인: 모드별 depth 구조 표 (핵심!) -->
-        <div class="depth-section">
-          <div class="depth-title">🎯 분류 필터 모드별 <strong>depth 구조</strong></div>
-          <table class="depth-table">
-            <tr><th>모드</th><th>depth</th><th>구조</th></tr>
-            <tr>
-              <td><span class="depth-icon">🔍</span> <strong>둘러보기</strong></td>
-              <td><span class="depth-badge d-none">없음</span></td>
-              <td>검색만 (depth 없이 자유 탐색)</td>
-            </tr>
-            <tr class="depth-highlight">
-              <td><span class="depth-icon">📚</span> <strong>교과서별</strong></td>
-              <td><span class="depth-badge d-5">5-depth</span></td>
-              <td>교과서 → 과목 → 학년 → 학기 → 단원</td>
-            </tr>
-            <tr>
-              <td><span class="depth-icon">📖</span> <strong>교재별</strong> (문제집)</td>
-              <td><span class="depth-badge d-3">3-depth</span></td>
-              <td>문제집 → 학년 → 학기</td>
-            </tr>
-            <tr>
-              <td><span class="depth-icon">📐</span> <strong>과목별</strong></td>
-              <td><span class="depth-badge d-4">4-depth</span></td>
-              <td>과목 → 학년/학기 → 단원 → 지식요인</td>
-            </tr>
-            <tr>
-              <td><span class="depth-icon">🎨</span> <strong>테마별</strong></td>
-              <td><span class="depth-badge d-2">2-depth</span></td>
-              <td>테마 (간단 분류)</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ────── Slide 14: 3-3 교사 화면 ────── -->
-<div class="slide" data-slide="14">
-  <div class="s-head">
-    <div class="s-head-l">
-      <div class="s-tag t3">3-3</div>
       <div class="s-title">사용자 플로우 — 교사 화면 (WEB)</div>
     </div>
     <div class="s-sub">SSO 통합 로그인 → 통합 플랫폼 → 3D 퀴즈 게임 (별도 도메인)</div>
@@ -3406,11 +3557,11 @@ table tr:hover td { background: #f9fafb; }
   </div>
 </div>
 
-<!-- ────── Slide 15: 3-4 학생 화면 ────── -->
-<div class="slide" data-slide="15">
+<!-- ────── Slide 14: 3-3 학생 화면 ────── -->
+<div class="slide" data-slide="14">
   <div class="s-head">
     <div class="s-head-l">
-      <div class="s-tag t3">3-4</div>
+      <div class="s-tag t3">3-3</div>
       <div class="s-title">사용자 플로우 — 학생 화면 (WEB · 게스트 계정)</div>
     </div>
     <div class="s-sub">QR 입장 → 캐릭터 선택 → 게임 → 결과 화면</div>
@@ -3460,7 +3611,7 @@ const slideTitles = [
   '표지', '목차',
   '1-1 범위', '1-2 일정',
   '2-1 요약', '2-2 패키지', '2-3 방법론', '2-4 A안', '2-5 B안', '2-6 C/D안', '2-7 플로우',
-  '3-1 세트지①', '3-2 세트지②', '3-3 교사', '3-4 학생'
+  '3-1 세트지', '3-2 교사', '3-3 학생'
 ];
 const hnav = document.getElementById('hnav');
 slideTitles.forEach((t, i) => {
